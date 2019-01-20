@@ -1,6 +1,6 @@
 <template>
   <ul class="list-layout">
-    <li class="list-item" v-for="site in $page.frontmatter.sites" :key="site.index">
+    <li class="list-item" v-for="site in sites" :key="site.index">
     <figure class="figure">
       <img class="site-img" :src="site.img" :alt="site.title + ' screenshot'">
       <figcaption class="caption">
@@ -16,16 +16,52 @@
 <script>
   export default {
     name: 'ListLayout',
-    computed: {
-      imgPath(){
-        return window.location.origin
-      }
+    data: () => ({
+      sites: [{
+        'title': 'bencodezen.io',
+        'img': '/ben.png',
+        'tags': ['blog'],
+        'url': 'https://bencodezen.io',
+        'likes': 12
     },
-    methods: {
-      goToSite(link){
-          window.open(link,'_blank');
-        }
-    }
+        {
+        'title': 'vuepress-portfolio',
+        'img': 'acme.jpg',
+        'tags': ['portfolio', 'blog'],
+        'url': 'https://vuepress-portfolio.netlify.com/',
+        'likes': 10
+        },
+        {
+        'title': 'Vuesax',
+        'img': 'vuesax.png',
+        'tags': ['other'],
+        'url': 'https://lusaxweb.github.io/vuesax/',
+        'path': '/example',
+        'layout': 'SingleLayout'
+        },
+        {
+        'title': 'bencodezen.io',
+        'img': '/ben.png',
+        'tags': ['blog'],
+        'url': 'https://bencodezen.io',
+        'likes': 12
+        },
+        {
+        'title': 'vuepress-portfolio',
+        'img': 'acme.jpg',
+        'tags': ['portfolio', 'blog'],
+        'url': 'https://vuepress-portfolio.netlify.com/',
+        'likes': 10
+        },
+        {
+        'title': 'Vuesax',
+        'img': 'vuesax.png',
+        'tags': ['other'],
+        'url': 'https://lusaxweb.github.io/vuesax/',
+        'path': '/example',
+        'layout': 'SingleLayout'
+        }]
+    })
   }
 </script>
 
