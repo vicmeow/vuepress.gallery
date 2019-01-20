@@ -1,4 +1,4 @@
 module.exports = {
-  title: 'Made with VuePress',
+  title: 'VuePress Gallery',
   description: 'A curated list of custom VuePress themes.'
 }

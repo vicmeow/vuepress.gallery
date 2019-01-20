@@ -1,4 +1,4 @@
-# Made with VuePress 💚
+# VuePress Gallery 💚
 
 This is a curated list of custom VuePress themes.
 

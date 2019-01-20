@@ -1,5 +1,5 @@
 ---
 home: true
-title: Made with VuePress 💚
+title: VuePress Gallery 💚
 layout: ListLayout
 ---
