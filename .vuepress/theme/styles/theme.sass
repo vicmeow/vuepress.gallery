@@ -1,27 +1,42 @@
 @font-face
   font-family: "Merriweather"
-  src: require("./fonts/merriweather-regular.ttf")
+  src: url("./fonts/merriweather-regular.ttf")
   font-weight: normal
   font-style: normal
 
 @font-face
-  font-family: "Merriweather"
-  src: require("./fonts/merriweather-light.ttf")
-  font-weight: 300
+  font-family: "Lato"
+  src: url("./fonts/Lato-Regular.ttf")
+  font-weight: normal
   font-style: normal
+
+$heading: 'Merriweather'
+$body: 'Lato'
+
+$black: #333
+$bg: #feffff
 
 *
   box-sizing: border-box
-
-body
-  font-family: 'Merriweather'
-  color: #333
-  font-size: 20px
   margin: 0
   padding: 0
 
-h1,h2,h3,h4
-  font-family: 'Merriweather'
+body
+  font-family: $body
+  color: $black
+  font-size: 20px
+  margin: 0
+  padding: 0
+  background: $bg
+  line-height: 1.5
+
+h1
+  font-family: $heading
+  font-weight: normal
+  margin: 0
+
+h2,h3,h4
+  font-family: $body
   color: #333
   font-weight: normal
   margin: 0
@@ -30,9 +45,9 @@ a
   text-decoration: none
 
 .page-title
-  position: sticky
-  top: 0
-  background: white
   font-size: 1.2em
-  padding: 2em 1em 1em
+  padding-top: 2em
+  text-align: center
+
+.page-description
   text-align: center
