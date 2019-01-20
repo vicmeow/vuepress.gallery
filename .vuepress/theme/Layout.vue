@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
-    <h1 class="page-title">{{$page.frontmatter.title}}</h1>
+    <h1 class="page-title">{{ $page.frontmatter.title }}</h1>
+    <p class="page-description">{{ $page.frontmatter.description }}</p>
     <component :is="layout"></component>
   </div>
 </template>
