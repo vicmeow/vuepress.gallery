@@ -1,6 +1,3 @@
----
-home: true
-title: Made with VuePress 💚
-layout: ListLayout
-description: A curated list of custom VuePress themes.
----
+# Made with VuePress 💚
+
+This is curated list of custom VuePress themes. Be inspired and 

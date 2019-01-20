@@ -5,8 +5,8 @@
   "description": "A curated list of custom VuePress themes.",
   "license": "MIT",
   "scripts": {
-    "serve": "vuepress dev",
-    "build": "vuepress build src"
+    "serve": "vuepress dev showcase",
+    "build": "vuepress build showcase"
   },
   "dependencies": {
     "vuepress": "^0.14.8"
