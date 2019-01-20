@@ -2,6 +2,7 @@
   "name": "madewith-vuepress",
   "version": "1.0.0",
   "author": "vicbergquist",
+  "description": "A curated list of custom VuePress themes.",
   "license": "MIT",
   "scripts": {
     "serve": "vuepress dev",
