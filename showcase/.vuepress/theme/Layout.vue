@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <h1 class="page-title">{{ $page.frontmatter.title }}</h1>
-    <p class="page-description">{{ $page.frontmatter.description }}</p>
+    <p class="page-description">A curated list of custom <a href="https://vuepress.vuejs.org" rel="noopener">VuePress</a> themes.</p>
     <component :is="layout"></component>
   </div>
 </template>
