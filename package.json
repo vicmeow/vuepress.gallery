@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "vicbergquist",
   "description": "A curated list of custom VuePress themes.",
+  "url": "https://github.com/vicbergquist/madewith-vuepress",
   "license": "MIT",
   "scripts": {
     "serve": "vuepress dev showcase",
