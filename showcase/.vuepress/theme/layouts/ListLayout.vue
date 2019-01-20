@@ -20,48 +20,44 @@
     name: 'ListLayout',
     data: () => ({
       sites: [{
-        'title': 'bencodezen.io',
-        'img': '/ben.png',
-        'tags': ['blog'],
-        'url': 'https://bencodezen.io',
-        'likes': 12
+          title: 'bencodezen.io',
+          img: '/ben.png',
+          tags: ['blog'],
+          url: 'https://bencodezen.io',
+          likes: 12
         },
         {
-        'title': 'vuepress-portfolio',
-        'img': 'acme.jpg',
-        'tags': ['portfolio', 'blog'],
-        'url': 'https://vuepress-portfolio.netlify.com/',
-        'likes': 10
+          title: 'vuepress-portfolio',
+          img: 'acme.jpg',
+          tags: ['portfolio', 'blog'],
+          url: 'https://vuepress-portfolio.netlify.com/',
+          likes: 10
         },
         {
-        'title': 'Vuesax',
-        'img': 'vuesax.png',
-        'tags': ['other'],
-        'url': 'https://lusaxweb.github.io/vuesax/',
-        'path': '/example',
-        'layout': 'SingleLayout'
+          title: 'Vuesax',
+          img: 'vuesax.png',
+          tags: ['other'],
+          url: 'https://lusaxweb.github.io/vuesax/'
         },
         {
-        'title': 'bencodezen.io',
-        'img': '/ben.png',
-        'tags': ['blog'],
-        'url': 'https://bencodezen.io',
-        'likes': 12
+          title: 'bencodezen.io',
+          img: '/ben.png',
+          tags: ['blog'],
+          url: 'https://bencodezen.io',
+          likes: 12
         },
         {
-        'title': 'vuepress-portfolio',
-        'img': 'acme.jpg',
-        'tags': ['portfolio', 'blog'],
-        'url': 'https://vuepress-portfolio.netlify.com/',
-        'likes': 10
+          title: 'vuepress-portfolio',
+          img: 'acme.jpg',
+          tags: ['portfolio', 'blog'],
+          url: 'https://vuepress-portfolio.netlify.com/',
+          likes: 10
         },
         {
-        'title': 'Vuesax',
-        'img': 'vuesax.png',
-        'tags': ['other'],
-        'url': 'https://lusaxweb.github.io/vuesax/',
-        'path': '/example',
-        'layout': 'SingleLayout'
+          title: 'Vuesax',
+          img: 'vuesax.png',
+          tags: ['other'],
+          url: 'https://lusaxweb.github.io/vuesax/'
         }]
     })
   }
