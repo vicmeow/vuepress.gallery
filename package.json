@@ -1,0 +1,17 @@
+{
+  "name": "madewith-vuepress",
+  "version": "1.0.0",
+  "author": "vicbergquist",
+  "license": "MIT",
+  "scripts": {
+    "serve": "vuepress dev",
+    "build": "vuepress build src"
+  },
+  "dependencies": {
+    "vuepress": "^0.14.8"
+  },
+  "devDependencies": {
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0"
+  }
+}
