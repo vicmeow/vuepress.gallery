@@ -6,8 +6,8 @@
   "url": "https://github.com/vicbergquist/madewith-vuepress",
   "license": "MIT",
   "scripts": {
-    "serve": "vuepress dev showcase",
-    "build": "vuepress build showcase"
+    "serve": "vuepress dev gallery",
+    "build": "vuepress build gallery"
   },
   "dependencies": {
     "vuepress": "^0.14.8"

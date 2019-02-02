@@ -1,84 +1,35 @@
 <template>
-  <div class="list">
-    <ul class="unique-tags">
-      <li @click="updateFilter('all')" :class="{'is-active': filter === 'all'}">All</li>
-      <li class="tag-item" v-for="tag in uniqueTags" @click="updateFilter(tag)" :class="{'is-active': filter === tag}">{{ tag }}</li>
-    </ul>
-    <ul class="item-list">
-      <li class="list-item" v-for="site in filteredSites" :key="site.likes">
+  <ul class="site-list">
+      <li class="list-item" v-for="site in sites" :key="site.index">
         <figure class="figure">
           <div class="gradient-overlay"></div>
-          <img class="site-img" :src="'screenshots/' + site.img" :alt="site.title + ' screenshot'">
-          <!-- TODO: Include name, tags? Must have link to website OR repo -->
+          <img class="site-img" :src="'screenshots/' + site.frontmatter.src" :alt="site.frontmatter.title + ' screenshot'">
           <figcaption class="caption">
-            <a class="site-link" :href="site.url">
-              <h2 class="site-title">{{ site.title }}</h2>
+            <a class="site-link" :href="site.frontmatter.url">
+              <h2 class="site-title">{{ site.frontmatter.title }}</h2>
             </a>
             <ul class="tag-list">
-              <li class="tag-item" v-for="tag in site.tags" @click="updateFilter(tag)">{{ tag }}</li>
+              <li class="tag-item" v-for="tag in site.frontmatter.tags" @click="updateFilter(tag)">{{ tag }}</li>
             </ul>
           </figcaption>
         </figure>
       </li>
     </ul>
-  </div>
 </template>
 
 <script>
-  export default {
-    name: 'ListLayout',
-    data: () => ({
-      filter: 'all',
-      sites: [{
-          title: 'Made with VuePress',
-          img: '/vuepress-gallery.png',
-          tags: ['portfolio'],
-          url: 'https://vuepress.gallery',
-          likes: 1
-        },
-        {
-          title: 'bencodezen.io',
-          img: '/ben.png',
-          tags: ['blog'],
-          url: 'https://bencodezen.io',
-          likes: 2
-        },
-        {
-          title: 'vuepress-portfolio',
-          img: '/acme.jpg',
-          tags: ['portfolio'],
-          url: 'https://vuepress-portfolio.netlify.com/',
-          likes: 3
-        },
-        {
-          title: 'Vuesax',
-          img: '/vuesax.png',
-          tags: ['tools'],
-          url: 'https://lusaxweb.github.io/vuesax/',
-          likes: 4
-        }]
-    }),
-    computed: {
-      filteredSites() {
-        return this.filter === 'all' ? this.sites : this.sites.filter(site => site.tags.some(tag => tag === this.filter))
-      },
-      uniqueTags() {
-        const tags = []
-        this.sites.map(site => site.tags.map(tag => tags.push(tag)))
-        return [...new Set(tags)]
-      }
-    },
-    methods: {
-      updateFilter(tag){
-        this.filter = tag
-      }
+export default {
+  props: {
+    sites: {
+      type: Array,
+      required: true
     }
   }
+}
 </script>
 
-<style lang="sass" scoped>
-
-.item-list
+<style lang="sass">
+.site-list
   min-height: 100vh
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr))
@@ -178,3 +129,5 @@
 .is-active
   text-decoration: underline
 </style>
+
+
