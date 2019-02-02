@@ -52,10 +52,12 @@
     margin: 0 auto
     grid-template-columns: 1.5fr 1fr
     grid-template-areas: 'img more'
+    padding-bottom: 2em
     @media screen and (max-width: 768px)
       grid-template-columns: 1fr
       grid-template-areas: 'more' 'img'
       max-width: 100%
+      align-content: flex-start
 
   .single-content
     grid-area: more
@@ -89,6 +91,7 @@
     border-radius: 5px
     @media screen and (max-width: 768px)
       margin: 0 1em
+      padding-bottom: 2em
 
   .screenshot-list
     display: grid
@@ -122,6 +125,7 @@
         width: 100%
       @media screen and (max-width: 768px)
         max-width: 150px
+        margin: 0 .5em
   .hidden
     visibility: hidden
 </style>
