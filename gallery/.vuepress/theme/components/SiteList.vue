@@ -3,14 +3,14 @@
       <li class="list-item" v-for="site in sites" :key="site.index">
         <figure class="figure">
           <div class="gradient-overlay"></div>
-          <img class="site-img" :src="'screenshots/' + site.frontmatter.src" :alt="site.frontmatter.title + ' screenshot'">
+          <img class="site-img" :src="site.frontmatter.site_screenshots[0]" :alt="site.frontmatter.title + ' screenshot'">
           <figcaption class="caption">
-            <a class="site-link" :href="site.frontmatter.url">
+            <a class="site-link" :href="site.path">
               <h2 class="site-title">{{ site.frontmatter.title }}</h2>
             </a>
-            <ul class="tag-list">
-              <li class="tag-item" v-for="tag in site.frontmatter.tags" @click="updateFilter(tag)">{{ tag }}</li>
-            </ul>
+            <!-- <ul class="tag-list">
+              <li class="tag-item" v-for="tag in site.frontmatter.site_tags" @click="updateFilter(tag)">{{ tag }}</li>
+            </ul> -->
           </figcaption>
         </figure>
       </li>
@@ -36,7 +36,7 @@ export default {
   gap: 1.5em
   margin: 0 auto
   justify-content: center
-  padding: 2em 2em
+  padding: 0 2em
   list-style-type: none
   margin: 0
   @media screen and (min-width: 1448px)
@@ -47,12 +47,11 @@ export default {
   display: inline-block
   position: relative
   height: 430px
-  box-shadow: 0px 2px 15px rgba(0,0,0,.1)
+  box-shadow: 0px 2px 10px rgba(0,0,0,.1)
   border-radius: .5em
   background: white
   overflow: hidden
   padding: 1em .5em
-  //justify-content: space-around
   transition: transform .3s ease-in-out
   @media screen and (min-width: 1448px)
     height: 600px
@@ -70,15 +69,6 @@ export default {
   grid-row: 2
   padding: .5em 1em
   background: #fff
-
-// .site-link::after
-//   content: ''
-//   position: absolute
-//   top: 0
-//   right: 0
-//   left: 0
-//   bottom: 0
-//   z-index: 99
 
 .site-img
   height: 100%

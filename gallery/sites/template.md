@@ -1,6 +1,6 @@
 ---
 title: Theme Title
-template: false
+template: true
 layout: single
 date: 2019-01-01
 url: #

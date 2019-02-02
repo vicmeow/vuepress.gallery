@@ -1,18 +1,19 @@
 <template>
   <div class="wrapper">
     <!-- TODO: Make header component -->
-    <h1 class="page-title">{{ $page.frontmatter.title }}</h1>
-    <p class="page-description">A curated list of custom <a href="https://vuepress.vuejs.org" rel="noopener">VuePress</a> themes.</p>
-    
-    <component :is="layout"></component>
+    <the-header/>
+    <component class="content" :is="layout"></component>
+    <!-- <footer>I'm the footer</footer> -->
     <!-- TODO: Make footer component -->
   </div>
 </template>
 <script>
+  import TheHeader from './components/TheHeader'
   import ListLayout from './layouts/ListLayout'
   import SingleLayout from './layouts/SingleLayout'
   export default {
     components: {
+      TheHeader,
       ListLayout,
       SingleLayout
       },
