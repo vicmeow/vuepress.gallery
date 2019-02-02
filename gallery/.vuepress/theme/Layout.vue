@@ -1,10 +1,13 @@
 <template>
   <div class="wrapper">
-    <!-- TODO: Make header component -->
-    <the-header/>
-    <component class="content" :is="layout"></component>
-    <!-- <footer>I'm the footer</footer> -->
-    <!-- TODO: Make footer component -->
+    <transition-group mode="out-in" name="page">
+      <the-header :key="'header'"/>
+      <component
+        class="content" 
+        :is="layout" 
+        :key="$route.fullPath"/>
+      <!-- <footer>I'm the footer</footer> -->
+    </transition-group>
   </div>
 </template>
 <script>
@@ -30,4 +33,14 @@
 
 <style lang="sass">
 @import './styles/theme.sass'
+</style>
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
 </style>
