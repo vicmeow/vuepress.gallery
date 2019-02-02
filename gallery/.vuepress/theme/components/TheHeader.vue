@@ -35,7 +35,6 @@
   z-index: 1000
   //padding: 1em 0
   @media screen and (max-width: 768px)
-    width: calc(100% + 2em)
     padding: 0 1em
 
 header
