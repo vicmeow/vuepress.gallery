@@ -50,11 +50,12 @@
     flex-shrink: 0
     flex-grow: 1
     margin: 0 auto
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1.5fr 1fr
     grid-template-areas: 'img more'
     @media screen and (max-width: 768px)
       grid-template-columns: 1fr
       grid-template-areas: 'more' 'img'
+      max-width: 100%
 
   .single-content
     grid-area: more
@@ -62,17 +63,21 @@
     flex-direction: column
     align-self: flex-start
     position: sticky
+    top: calc(180px)
     flex-shrink: 0
     flex-grow: 1
-    top: calc(180px)
     padding: 0 1em 1em
     height: calc(100vh - 180px - 1em)
     text-align: center
+    overflow-y: auto
+    padding-top: .5em
     @media screen and (max-width: 768px)
       height: auto
       position: relative
       top: 0
-      margin: 0 -2em
+      padding: 0
+      overflow-x: auto
+      margin-right: 1em
 
   .img-wrapper
     grid-area: img
@@ -83,11 +88,11 @@
     box-shadow: 0px 2px 10px rgba(0,0,0,.1)
     border-radius: 5px
     @media screen and (max-width: 768px)
-      margin: 0
+      margin: 0 1em
 
   .screenshot-list
     display: grid
-    grid-template-columns: repeat(auto-fill, minmax(300px,1fr))
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr))
     list-style-type: none
     gap: 1em
     width: 100%
@@ -97,10 +102,11 @@
     @media screen and (max-width: 768px)
       display: flex
       flex-wrap: nowrap
-      overflow-x: auto
       height: 170px
-      padding: 1em 0
+      padding: 1em
       overflow: -moz-scrollbars-none
+      overflow-x: auto
+      -webkit-overflow-scrolling: touch
 
     .screenshot-item
       max-height: 250px
@@ -115,9 +121,7 @@
         object-fit: cover
         width: 100%
       @media screen and (max-width: 768px)
-        max-height: 250px
         max-width: 150px
-        margin: 0 .5em
   .hidden
     visibility: hidden
 </style>

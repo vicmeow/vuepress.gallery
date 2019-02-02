@@ -29,6 +29,7 @@ export default {
 </script>
 
 <style lang="sass">
+
 .site-list
   min-height: 100vh
   display: grid
@@ -51,7 +52,7 @@ export default {
   border-radius: .5em
   background: white
   overflow: hidden
-  padding: 1em .5em
+  padding: .5em
   transition: transform .3s ease-in-out
   @media screen and (min-width: 1448px)
     height: 600px

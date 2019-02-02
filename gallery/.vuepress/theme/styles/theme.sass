@@ -31,6 +31,8 @@ body
   line-height: 1.4
   height: 100%
   overflow-x: hidden
+  @media screen and (max-width: 768px)
+    font-size: 18px
 
 h1,h2
   font-family: $heading
@@ -39,8 +41,10 @@ h1,h2
   margin: 0
 
 h1
-  font-size: 2.2em
+  font-size: 1.8em
   text-transform: capitalize
+  @media screen and (max-width: 420px)
+    font-size: 1.6em
 
   span
     font-size: .5em
@@ -67,8 +71,6 @@ img
   justify-content: center
   align-content: center
   align-items: center
-  @media screen and (max-width: 768px)
-    margin: 1em
 
 .content
   height: 100%
