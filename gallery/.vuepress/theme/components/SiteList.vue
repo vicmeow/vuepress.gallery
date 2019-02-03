@@ -37,12 +37,11 @@ export default {
   gap: 1.5em
   margin: 0 auto
   justify-content: center
-  padding: 0 2em
+  padding: 0 1em
   list-style-type: none
   margin: 0
   @media screen and (min-width: 1448px)
     gap: 2em
-    padding: 0 1em
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr))
 
 .list-item
