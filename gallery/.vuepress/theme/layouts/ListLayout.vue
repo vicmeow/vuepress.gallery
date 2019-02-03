@@ -56,7 +56,6 @@
 <style lang="sass">
 
 .site-list
-  min-height: 100vh
   margin: 0 auto
   justify-content: center
   list-style-type: none

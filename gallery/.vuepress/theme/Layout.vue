@@ -8,7 +8,6 @@
         :filter="filter"
         @update-filter="updateFilter"
         :key="$route.fullPath"/>
-      <!-- <footer>I'm the footer</footer> -->
     </transition-group>
   </div>
 </template>
