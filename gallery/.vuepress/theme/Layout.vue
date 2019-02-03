@@ -20,6 +20,9 @@
       ListLayout,
       SingleLayout
       },
+    mounted() {
+      window.ga('set', 'anonymizeIp', true)
+    },
     computed: {
       layout() {
         return `${this.$page.frontmatter.layout}-layout`
