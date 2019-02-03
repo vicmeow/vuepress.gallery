@@ -2,16 +2,30 @@
   <div class="header-wrapper">
     <header class="header">
       <router-link class="nav-home" to="/">
-        <span class="home-icon">
-          <img
-            :class="{ 'back-icon': $page.frontmatter.layout === 'single' }"
-            class="icon" 
-            src="/favicon.ico"/>
+        <span 
+          class="home-icon" 
+          :class="{ 'back-icon': $page.frontmatter.layout === 'single' }">
+        <img
+          class="icon" 
+          src="/favicon.ico"/>
         </span>
       </router-link>
       <template v-if="$page.frontmatter.layout === 'list'">
         <h1 class="page-title"> {{ $siteTitle }}</h1>
         <p class="page-description">{{ $description }}</p>
+        <ul class="tag-list">
+          <li
+            class="tag-item accent"
+            @click="updateFilter('all')" 
+            :class="{'is-active': filter === 'all'}"
+            tabindex="0">All</li>
+          <li 
+            class="tag-item accent" 
+            v-for="tag in uniqueTags" 
+            @click="updateFilter(tag)" 
+            :class="{'is-active': filter === tag}"
+            tabindex="0">{{ tag }}</li>
+        </ul>
       </template>
       <template v-else>
         <h1 class="page-title">
@@ -25,7 +39,32 @@
   </div>
 </template>
 
-<style lang="sass">
+<script>
+export default {
+  props: {
+    filter: {
+      type: String
+    }
+  },
+  methods: {
+    updateFilter(tag){
+      this.$emit('update-filter', tag)
+    }
+  },
+  computed: {
+    uniqueTags() {
+        const sites = this.$site.pages
+            .filter(x => x.path.startsWith('/sites/') && !x.frontmatter.template)
+        const tags = []
+        sites.map(site => site.frontmatter.site_tags.map(tag => tags.push(tag)))
+        return [...new Set(tags)]
+      }
+  }
+}
+</script>
+
+
+<style lang="sass" scoped>
 
 .header-wrapper
   width: 100%
@@ -61,12 +100,17 @@ header
   height: 1.2em
   width: 1.2em
   transition: transform .2s linear
-
-.home-icon
   transform: rotate(0deg)
-  transition: transform .2s linear
 
-.nav-home:hover
+.back-icon .icon
+  height: .9em
+  width: .9em
   transform: rotate(90deg)
+
+.tag-list
+  margin-top: 1em
+
+.is-active
+  border-bottom: 1px solid #333
 
 </style>
