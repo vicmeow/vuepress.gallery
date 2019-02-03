@@ -79,7 +79,6 @@
       top: 0
       padding: 0
       overflow-x: auto
-      margin-right: 1em
 
   .img-wrapper
     grid-area: img

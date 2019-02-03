@@ -14,7 +14,7 @@
         <p class="page-description">{{ $description }}</p>
       </template>
       <template v-else>
-        <h1 class="site-heading">
+        <h1 class="page-title">
           <a :href="$page.frontmatter.site_url">{{ $page.frontmatter.title }}</a>
         </h1>
         <p class="site-by accent">by <a 
@@ -33,9 +33,10 @@
   top: 0
   background: linear-gradient(#fff 90%, rgba(255,255,255,0) 100%)
   z-index: 1000
-  //padding: 1em 0
   @media screen and (max-width: 768px)
     padding: 0 1em
+  @media screen and (max-width: 320px)
+    position: relative
 
 header
   display: flex
@@ -44,7 +45,7 @@ header
   max-width: 1400px
   margin: 0 auto
   width: 100%
-  padding: 1em 1em
+  padding: 1em
   text-align: center
   @media screen and (max-width: 420px)
     min-height: 130px

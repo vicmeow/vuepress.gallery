@@ -34,18 +34,17 @@ export default {
   min-height: 100vh
   margin: 0 auto
   justify-content: center
-  padding: 0 1em
   list-style-type: none
   margin: 0
   display: flex
   flex-wrap: wrap
-  gap: 1em
   align-content: flex-start
 
 .list-item
   display: inline-block
   position: relative
   max-height: 400px
+  min-height: 400px
   max-width: 400px
   box-shadow: 0px 2px 10px rgba(0,0,0,.1)
   border-radius: .5em
