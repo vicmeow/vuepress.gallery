@@ -53,11 +53,12 @@ h1
     text-transform: none
     font-family: $body
 
-a, a:visited
+a, a:visited, a:hover, a:focus
   text-decoration: none
   color: $black
-  &:hover, &:focus
-    text-decoration: underline
+
+a:hover, a:focus
+  border-bottom: 1px solid #333
 
 img
   width: 100%
@@ -73,6 +74,12 @@ img
   justify-content: center
   align-content: center
   align-items: center
+
+.accent
+  font-size: .85rem
+  font-family: 'Lato', sans-serif
+  text-transform: uppercase
+  letter-spacing: .1em
 
 .content
   height: 100%

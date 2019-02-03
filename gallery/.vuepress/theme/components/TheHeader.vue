@@ -17,7 +17,7 @@
         <h1 class="site-heading">
           <a :href="$page.frontmatter.site_url">{{ $page.frontmatter.title }}</a>
         </h1>
-        <p class="site-by">by <a 
+        <p class="site-by accent">by <a 
           :href="$page.frontmatter.creator_url"
           v-text="$page.frontmatter.creator"/></p>
       </template>
@@ -49,22 +49,23 @@ header
   @media screen and (max-width: 420px)
     min-height: 130px
 
-.site-by
-  font-size: .95em
-  opacity: .8
-
 .nav-home
-  &:hover
-    text-decaration: none
+  align-self: center
+  transition: transform .2s linear
+  &:focus, &:hover
+    border: 0
+    transform: scale(1.05)
 
 .icon
   height: 1.2em
   width: 1.2em
+  transition: transform .2s linear
 
 .home-icon
   transform: rotate(0deg)
-  transition: transform .3s linear
+  transition: transform .2s linear
 
-.back-icon 
+.nav-home:hover
   transform: rotate(90deg)
+
 </style>
