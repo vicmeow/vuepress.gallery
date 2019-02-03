@@ -1,7 +1,7 @@
 <template>
   <div class="single-layout">
     <figure class="img-wrapper">
-      <img :src="`/${activeSrc}`" :alt="$page.frontmatter.title">
+      <img class="single-img" :src="`/${activeSrc}`" :alt="$page.frontmatter.title">
       <figcaption class="hidden">A screenshot of {{$page.frontmatter.title}}</figcaption>
     </figure>
     <div class="single-content">
@@ -9,10 +9,11 @@
         <li
           tabindex="0" 
           class="screenshot-item" 
-          v-for="screenshot in $page.frontmatter.site_screenshots" 
+          v-for="screenshot in $page.frontmatter.site_screenshots"
+          v-if="activeSrc !== screenshot"
           @click="updateSrc(screenshot)"
           @keydown.enter="updateSrc(screenshot)">
-          <img :src="`/${screenshot}`">
+          <img class="single-img" :src="`/${screenshot}`">
         </li>
       </ul>
     </div>
@@ -20,11 +21,6 @@
 </template>
 
 <script>
-  // TODO:
-  //  1. Screenshot
-  //  2. Name of site
-  //  4. Link to site
-  //  5. Tags
   export default {
     name: 'SingleLayout',
     data() {
@@ -91,6 +87,12 @@
     @media screen and (max-width: 768px)
       margin: 0 1em
       padding-bottom: 2em
+
+  .single-img
+    object-fit: scale-down
+    object-position: 50% 0
+    @media screen and (max-width: 768px)
+      object-fit: cover
 
   .screenshot-list
     display: grid
