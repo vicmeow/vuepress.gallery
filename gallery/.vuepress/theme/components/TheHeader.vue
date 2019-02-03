@@ -80,11 +80,11 @@ export default {
 header
   display: flex
   flex-direction: column
-  min-height: 150px
+  min-height: 165px
   max-width: 1400px
   margin: 0 auto
   width: 100%
-  padding: 1em
+  padding: .5em 0 0 0
   text-align: center
   @media screen and (max-width: 420px)
     min-height: 130px
@@ -97,18 +97,16 @@ header
     transform: scale(1.05)
 
 .icon
-  height: 1.2em
-  width: 1.2em
+  height: .9em
+  width: .9em
   transition: transform .2s linear
   transform: rotate(0deg)
 
 .back-icon .icon
-  height: .9em
-  width: .9em
   transform: rotate(90deg)
 
 .tag-list
-  margin-top: 1em
+  margin-top: .2em
 
 .is-active
   border-bottom: 1px solid #333
