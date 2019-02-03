@@ -54,6 +54,8 @@ export default {
   overflow: hidden
   padding: .5em
   transition: transform .3s ease-in-out
+  &:last-child
+    margin-bottom: 1em
   @media screen and (min-width: 1448px)
     height: 600px
   &:hover
