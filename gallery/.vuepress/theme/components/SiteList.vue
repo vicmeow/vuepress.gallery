@@ -42,6 +42,7 @@ export default {
   margin: 0
   @media screen and (min-width: 1448px)
     gap: 2em
+    padding: 0 1em
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr))
 
 .list-item
