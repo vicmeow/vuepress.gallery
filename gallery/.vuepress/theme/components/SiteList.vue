@@ -2,15 +2,15 @@
   <ul class="site-list">
       <li class="list-item" v-for="site in sites" :key="site.index">
         <figure class="figure">
-          <div class="gradient-overlay"></div>
           <img class="site-img" :src="site.frontmatter.site_screenshots[0]" :alt="site.frontmatter.title + ' screenshot'">
           <figcaption class="caption">
-            <a class="site-link" :href="site.path">
-              <h2 class="site-title">{{ site.frontmatter.title }}</h2>
-            </a>
-            <!-- <ul class="tag-list">
-              <li class="tag-item" v-for="tag in site.frontmatter.site_tags" @click="updateFilter(tag)">{{ tag }}</li>
-            </ul> -->
+            <h2 class="site-title">
+              <a class="site-link" :href="site.path">
+                {{ site.frontmatter.title }}</a>
+            </h2>
+            <ul class="tag-list">
+              <li class="tag-item accent" v-for="tag in site.frontmatter.site_tags" @click="updateFilter(tag)">{{ tag }}</li>
+            </ul>
           </figcaption>
         </figure>
       </li>
@@ -32,65 +32,67 @@ export default {
 
 .site-list
   min-height: 100vh
-  display: grid
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr))
-  gap: 1.5em
   margin: 0 auto
   justify-content: center
   padding: 0 1em
   list-style-type: none
   margin: 0
-  @media screen and (min-width: 1448px)
-    gap: 2em
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr))
+  display: flex
+  flex-wrap: wrap
+  gap: 1em
+  align-content: flex-start
 
 .list-item
   display: inline-block
   position: relative
-  height: 430px
+  max-height: 400px
+  max-width: 400px
   box-shadow: 0px 2px 10px rgba(0,0,0,.1)
   border-radius: .5em
   background: white
   overflow: hidden
-  padding: .5em
+  margin: .5em
   transition: transform .3s ease-in-out
   &:last-child
     margin-bottom: 1em
-  @media screen and (min-width: 1448px)
-    height: 600px
-  &:hover
+  &:hover, &:focus-within
     transform: scale(1.01)
 
+.list-item:focus-within .caption, .list-item:hover .caption
+  opacity: 1
+
+.site-title
+  font-size: 1.3em
+
 .figure
+  position: relative
   height: 100%
-  display: grid
-  grid-template-rows: 1fr max-content
   margin: 0
 
 .caption
-  grid-column: 1
-  grid-row: 2
-  padding: .5em 1em
-  background: #fff
+  display: flex
+  position: absolute
+  bottom: 0
+  right: 0
+  left: 0
+  width: 100%
+  height: 100%
+  opacity: 0
+  background: rgba(255,255,255,.9)
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  transition: all .3s linear
 
 .site-img
   height: 100%
   width: 100%
-  grid-column: 1
-  grid-row: 1/-1
   object-fit: cover
-  object-position: 50% 0
+  object-position: 0 0
 
 .site-title
-  font-size: 1.1em
   text-align: center
   width: 100%
-
-.gradient-overlay
-  grid-column: 1
-  grid-row: 1/2
-  z-index: 98
-  background: linear-gradient(rgba(255,255,255,0) 80%, #FFFFFF 100%) no-repeat 50% 50% / 100% 100%
 
 .tag-list
   width: 100%
@@ -98,10 +100,7 @@ export default {
   list-style-type: none
 
   .tag-item
-    font-size: .9em
     display: inline-block
-    margin-right: .5em
-    opacity: .6
     &:hover
       text-underline
       cursor: pointer
