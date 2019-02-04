@@ -1,5 +1,18 @@
 <template>
   <div class="list-layout">
+    <ul class="header-tag-list tag-list">
+          <li
+            class="tag-item accent"
+            @click="updateFilter('all')" 
+            :class="{'is-active': filter === 'all'}"
+            tabindex="0">All</li>
+          <li 
+            class="tag-item accent" 
+            v-for="tag in uniqueTags" 
+            @click="updateFilter(tag)" 
+            :class="{'is-active': filter === tag}"
+            tabindex="0">{{ tag }}</li>
+        </ul>
     <ul class="site-list">
       <li 
         class="list-item" 
@@ -38,22 +51,45 @@
         type: String
       }
     },
-    computed: {
-      filteredSites() {
-      return this.filter === 'all' 
-        ? this.sites
-        : this.sites.filter(site => site.frontmatter.site_tags.some(tag => tag === this.filter))
-      },
-      sites(){
-        return this.$site.pages
-            .filter(x => x.path.startsWith('/sites/') && !x.frontmatter.template)
-            .sort((a, b) => new Date(b.frontmatter.date_added) - new Date(a.frontmatter.date))
-      }
+    methods: {
+    updateFilter(tag){
+      this.$emit('update-filter', tag)
     }
+  },
+  computed: {
+    uniqueTags() {
+        const sites = this.$site.pages
+            .filter(x => x.path.startsWith('/sites/') && !x.frontmatter.template)
+        const tags = []
+        sites.map(site => site.frontmatter.site_tags.map(tag => tags.push(tag)))
+        return [...new Set(tags)]
+      },
+    filteredSites() {
+    return this.filter === 'all' 
+      ? this.sites
+      : this.sites.filter(site => site.frontmatter.site_tags.some(tag => tag === this.filter))
+    },
+    sites(){
+      return this.$site.pages
+          .filter(x => x.path.startsWith('/sites/') && !x.frontmatter.template)
+          .sort((a, b) => new Date(b.frontmatter.date_added) - new Date(a.frontmatter.date))
+    }
+  }
   }
 </script>
 
 <style lang="sass">
+
+.header-tag-list
+  position: sticky
+  top: 0
+  z-index: 2000
+  background: linear-gradient(#fff 65%, rgba(255,255,255,0) 100%)
+  margin-top: 0
+  min-height: 2em
+
+.is-active
+  border-bottom: 1px solid #333
 
 .site-list
   margin: 0 auto

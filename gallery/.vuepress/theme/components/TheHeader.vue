@@ -1,5 +1,5 @@
 <template>
-  <div class="header-wrapper">
+  <div class="header-wrapper" :class="{'header-sticky': $page.frontmatter.layout === 'single'}">
     <header class="header">
       <router-link class="nav-home" to="/">
         <span 
@@ -13,19 +13,6 @@
       <template v-if="$page.frontmatter.layout === 'list'">
         <h1 class="page-title"> {{ $siteTitle }}</h1>
         <p class="page-description">{{ $description }}</p>
-        <ul class="tag-list">
-          <li
-            class="tag-item accent"
-            @click="updateFilter('all')" 
-            :class="{'is-active': filter === 'all'}"
-            tabindex="0">All</li>
-          <li 
-            class="tag-item accent" 
-            v-for="tag in uniqueTags" 
-            @click="updateFilter(tag)" 
-            :class="{'is-active': filter === tag}"
-            tabindex="0">{{ tag }}</li>
-        </ul>
       </template>
       <template v-else>
         <h1 class="page-title">
@@ -39,55 +26,27 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    filter: {
-      type: String
-    }
-  },
-  methods: {
-    updateFilter(tag){
-      this.$emit('update-filter', tag)
-    }
-  },
-  computed: {
-    uniqueTags() {
-        const sites = this.$site.pages
-            .filter(x => x.path.startsWith('/sites/') && !x.frontmatter.template)
-        const tags = []
-        sites.map(site => site.frontmatter.site_tags.map(tag => tags.push(tag)))
-        return [...new Set(tags)]
-      }
-  }
-}
-</script>
-
-
 <style lang="sass" scoped>
 
 .header-wrapper
   width: 100%
+  z-index: 10000
+  background: linear-gradient(#fff 80%, rgba(255,255,255,0) 100%)
+  padding-top: .5em
+
+.header-sticky
   position: sticky
   top: 0
-  background: linear-gradient(#fff 90%, rgba(255,255,255,0) 100%)
-  z-index: 1000
-  @media screen and (max-width: 768px)
-    padding: 0 1em
-  @media screen and (max-width: 320px)
-    position: relative
+  padding-bottom: 1em
+  min-height: 7em
 
 header
   display: flex
   flex-direction: column
-  min-height: 165px
   max-width: 1400px
   margin: 0 auto
   width: 100%
-  padding: .5em 0 0 0
   text-align: center
-  @media screen and (max-width: 420px)
-    min-height: 130px
 
 .nav-home
   align-self: center
@@ -104,11 +63,5 @@ header
 
 .back-icon .icon
   transform: rotate(90deg)
-
-.tag-list
-  margin-top: .2em
-
-.is-active
-  border-bottom: 1px solid #333
 
 </style>
