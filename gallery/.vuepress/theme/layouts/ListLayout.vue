@@ -72,7 +72,7 @@
     sites(){
       return this.$site.pages
           .filter(x => x.path.startsWith('/sites/') && !x.frontmatter.template)
-          .sort((a, b) => new Date(b.frontmatter.date_added) - new Date(a.frontmatter.date))
+          .sort((a, b) => new Date(b.frontmatter.date_added) - new Date(a.frontmatter.date_added))
     }
   }
   }
