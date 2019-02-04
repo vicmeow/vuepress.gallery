@@ -84,9 +84,9 @@
   position: sticky
   top: 0
   z-index: 2000
-  background: linear-gradient(#fff 65%, rgba(255,255,255,0) 100%)
+  background: linear-gradient(#fff 70%, rgba(255,255,255,0) 100%)
   margin-top: 0
-  min-height: 2em
+  min-height: 2.2em
 
 .is-active
   border-bottom: 1px solid #333
