@@ -9,7 +9,7 @@ site_screenshots:
   - sites/ben-home.png
   - sites/ben-post.png
   - sites/ben-list.png
-site_description: This is the perfect example of VuePress used for blogging with a custom theme.
+site_description: Great example of a personal blog made with a custom VuePress theme.
 site_tags:
   - blog
 ---

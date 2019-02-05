@@ -7,11 +7,11 @@ module.exports = {
       {
         ga: 'UA-133690351-1'
       }	
-    ],
-    ['@vuepress/pwa',
-    { 
-      serviceWorker: true
-    }]
+    ]
+    // ['@vuepress/pwa',
+    // { 
+    //   serviceWorker: true
+    // }]
   ],
   head: [
     ['meta', { name: 'google-site-verification', content: 'nvnApLC80g7AZLICqtOpuMvdcU-CjQ7gJsku-gpkZAc'}],

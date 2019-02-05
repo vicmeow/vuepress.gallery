@@ -8,7 +8,6 @@ site_description: A terminal theme for VuePress!
 site_url: https://jacobsmith.me/vuepress-theme-terminal/
 site_screenshots:
   - sites/vuepress-terminal.png
-  - sites/vuepress-terminal-more.png
 site_tags:
   - portfolio
 ---
