@@ -150,6 +150,14 @@
   background: rgba(255,255,255,.9)
   margin: auto 0
   transition: all .3s linear
+  @media screen and (max-width: 768px)
+    position: sticky
+    bottom: 0
+    opacity: 1
+    height: auto
+    padding: .5em
+    background: rgba(255,255,255,.9)
+    align-content: flex-end
 
 .site-img
   object-fit: cover
