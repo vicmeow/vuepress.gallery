@@ -7,7 +7,9 @@ This is a curated list of custom VuePress themes.
 - [x] Feature: Link to individual website
 - [x] Feature: Tags (blog, portfolio, documentation etc.)
 - [ ] Feature: "Submit a theme" button
+- [ ] Feature: "Likes", signin with twitter/github
 - [ ] Feature: Filter by latest/most popular/oldest
 - [x] Feature: Filter by tags
 - [ ] Feature: Zoom in on screenshot (@vuepress/medium-zoom)
 - [ ] Feature: Tutorials/resources page
+- [ ] Todo: update single post layout and content
