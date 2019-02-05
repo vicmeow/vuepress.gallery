@@ -5,12 +5,27 @@
       <figcaption class="hidden">A screenshot of {{$page.frontmatter.title}}</figcaption>
     </figure>
     <div class="single-content">
-      <ul class="screenshot-list">
+      <div class="theme-details">
+        <!-- THEME TITLE & CREATOR -->
+        <h2 class="theme-title">{{ $page.frontmatter.title }}</h2>
+        <p class="theme-creator accent">by <a 
+            :href="$page.frontmatter.creator_url"
+            v-text="$page.frontmatter.creator"/></p>
+        
+        <!-- THEME LINK -->
+        <p> {{ $page.frontmatter.site_description }}</p>
+        <a class="theme-live accent" :href="$page.frontmatter.site_url">View live</a>
+        <!-- REPO LINK -->
+        <!-- TODO: Add repo link -->
+        <!-- THEME FEATURES -->
+        <!-- TODO: Add list of theme features -->
+      </div>
+      <h3 id="screenshots-heading">Screenshots</h3>
+      <ul class="screenshot-list" aria-labelledby="screenshots-heading">
         <li
           tabindex="0" 
           class="screenshot-item" 
           v-for="screenshot in $page.frontmatter.site_screenshots"
-          v-if="activeSrc !== screenshot"
           @click="updateSrc(screenshot)"
           @keydown.enter="updateSrc(screenshot)">
           <img class="single-img" :src="`/${screenshot}`">
@@ -61,12 +76,11 @@
     flex-direction: column
     align-self: flex-start
     position: sticky
-    top: calc(180px)
+    top: 7em
     flex-shrink: 0
     flex-grow: 1
     padding: 0 1em 1em
-    height: calc(100vh - 180px - 1em)
-    text-align: center
+    height: calc(100vh - 8em)
     overflow-y: auto
     padding-top: .5em
     @media screen and (max-width: 768px)
@@ -75,6 +89,17 @@
       top: 0
       padding: 0
       overflow-x: auto
+
+  .theme-details
+    @media screen and (max-width: 768px)
+      padding: 0 1em
+
+  .theme-creator
+    margin-bottom: 1em
+  
+  .theme-live
+    display: inline-block
+    margin-top: 1em
 
   .img-wrapper
     grid-area: img
@@ -101,6 +126,7 @@
     gap: 1em
     width: 100%
     padding: 0
+    //margin-top: 1em
     &::-webkit-scrollbar
       display: none
     @media screen and (max-width: 768px)

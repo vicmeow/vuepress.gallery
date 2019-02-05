@@ -140,6 +140,14 @@
   background: rgba(255,255,255,.9)
   margin: auto 0
   transition: all .3s linear
+  @media screen and (max-width: 768px)
+    position: sticky
+    bottom: 0
+    opacity: 1
+    height: auto
+    padding: .5em
+    background: rgba(255,255,255,.9)
+    align-content: flex-end
 
 .site-img
   object-fit: cover
@@ -153,7 +161,6 @@
   width: 100%
   text-align: center
   list-style-type: none
-  margin-top: .2em
 
   .tag-item
     display: inline-block

@@ -10,18 +10,8 @@
           src="/favicon.ico"/>
         </span>
       </router-link>
-      <template v-if="$page.frontmatter.layout === 'list'">
         <h1 class="page-title"> {{ $siteTitle }}</h1>
         <p class="page-description">{{ $description }}</p>
-      </template>
-      <template v-else>
-        <h1 class="page-title">
-          <a :href="$page.frontmatter.site_url">{{ $page.frontmatter.title }}</a>
-        </h1>
-        <p class="site-by accent">by <a 
-          :href="$page.frontmatter.creator_url"
-          v-text="$page.frontmatter.creator"/></p>
-      </template>
     </header>
   </div>
 </template>
@@ -32,6 +22,7 @@
   width: 100%
   z-index: 10000
   background: linear-gradient(#fff 80%, rgba(255,255,255,0) 100%)
+  padding: 0 .5em
   padding-top: .5em
 
 .header-sticky
@@ -51,9 +42,11 @@ header
 .nav-home
   align-self: center
   transition: transform .2s linear
-  &:focus, &:hover
-    border: 0
+  &:hover
     transform: scale(1.05)
+  &:focus
+    border-bottom: 1px solid #36c425
+    transform: scale(1.1)
 
 .icon
   height: .9em
