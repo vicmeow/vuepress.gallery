@@ -11,9 +11,6 @@ site_screenshots:
   - sites/ben-home.png
   - sites/ben-list.png
   - sites/ben-post.png
-  - sites/ben-home.png
-  - sites/ben-list.png
-  - sites/ben-post.png
 site_tags:
   - blog
 ---
