@@ -1,25 +1,28 @@
 <template>
   <div class="wrapper">
-    <transition-group mode="out-in" name="page">
-      <the-header :key="'header'" :filter="filter" @update-filter="updateFilter"/>
-      <component
-        class="content" 
-        :is="layout"
-        :filter="filter"
-        @update-filter="updateFilter"
-        :key="$route.fullPath"/>
-    </transition-group>
+    <the-header :key="'header'"/>
+    <Content 
+      :class="{'default-layout': $route.fullPath !== '/'}" 
+      :key="'$route.fullPath'"/>
+    <component
+      v-if="$page.frontmatter.layout"
+      class="content" 
+      :is="layout"
+      @update-filter="updateFilter"
+      :key="$route.fullPath"/>
   </div>
 </template>
 <script>
   import TheHeader from './components/TheHeader'
-  import ListLayout from './layouts/ListLayout'
-  import SingleLayout from './layouts/SingleLayout'
+  // import DefaultLayout from './layouts/DefaultLayout'
+  // import ListLayout from './layouts/ListLayout'
+  // import SingleLayout from './layouts/SingleLayout'
   export default {
     components: {
       TheHeader,
-      ListLayout,
-      SingleLayout
+      // DefaultLayout,
+      // ListLayout,
+      // SingleLayout
       },
     data() {
       return {
@@ -36,7 +39,9 @@
     },
     computed: {
       layout() {
-        return `${this.$page.frontmatter.layout}-layout`
+        return this.$page.frontmatter.layout
+          ? `${this.$page.frontmatter.layout}-layout`
+          : 'default-layout'
       }
     }
   }

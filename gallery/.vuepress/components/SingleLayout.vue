@@ -1,8 +1,8 @@
 <template>
-  <div class="single-layout">
+  <div class="page-wrapper single-layout">
     <figure class="img-wrapper">
-      <img class="single-img" :src="`/${activeSrc}`" :alt="$page.frontmatter.title">
-      <figcaption class="hidden">A screenshot of {{$page.frontmatter.title}}</figcaption>
+      <img class="single-img" :src="`/${ activeSrc }`" :alt="$page.frontmatter.title">
+      <figcaption class="hidden">A screenshot of {{ $page.frontmatter.title }}</figcaption>
     </figure>
     <div class="single-content">
       <ul class="screenshot-list">
@@ -10,7 +10,6 @@
           tabindex="0" 
           class="screenshot-item" 
           v-for="screenshot in $page.frontmatter.site_screenshots"
-          v-if="activeSrc !== screenshot"
           @click="updateSrc(screenshot)"
           @keydown.enter="updateSrc(screenshot)">
           <img class="single-img" :src="`/${screenshot}`">

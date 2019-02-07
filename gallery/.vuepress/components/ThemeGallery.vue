@@ -1,18 +1,22 @@
 <template>
-  <div class="list-layout">
-    <ul class="header-tag-list tag-list">
-          <li
-            class="tag-item accent"
-            @click="updateFilter('all')" 
-            :class="{'is-active': filter === 'all'}"
-            tabindex="0">All</li>
-          <li 
-            class="tag-item accent" 
-            v-for="tag in uniqueTags" 
-            @click="updateFilter(tag)" 
-            :class="{'is-active': filter === tag}"
-            tabindex="0">{{ tag }}</li>
-        </ul>
+  <div class="page-wrapper list-layout">
+    <div class="filter-wrapper">
+      <div class="accent" id="filter-heading">Filter:</div>
+      <ul class="header-tag-list tag-list" aria-labelledby="filter-heading">
+        <li
+          class="tag-item accent"
+          @click="updateFilter('all')" 
+          :class="{'is-active': filter === 'all'}"
+          tabindex="0">All</li>
+        <li 
+          class="tag-item accent" 
+          v-for="tag in uniqueTags"
+          :key="tag.index" 
+          @click="updateFilter(tag)" 
+          :class="{'is-active': filter === tag}"
+          tabindex="0">{{ tag }}</li>
+      </ul>
+    </div>
     <ul class="site-list">
       <li 
         class="list-item" 
@@ -28,11 +32,12 @@
               <a class="site-link" :href="site.path">
                 {{ site.frontmatter.title }}</a>
             </h2>
-            <ul class="tag-list">
+            <ul class="site-tag-list tag-list">
               <li
                 tabindex="0"
                 class="tag-item accent" 
                 v-for="tag in site.frontmatter.site_tags" 
+                :key="tag.index"
                 @click="$emit('update-filter', tag)"
                 @keydown.enter="$emit('update-filter', tag)">{{ tag }}</li>
             </ul>
@@ -45,21 +50,21 @@
 
 <script>
   export default {
-    name: 'ListLayout',
-    props: {
-      filter: {
-        type: String
+    name: 'ThemeGallery',
+    data() {
+      return {
+        filter: 'all'
       }
     },
     methods: {
     updateFilter(tag){
-      this.$emit('update-filter', tag)
+      this.filter = tag
     }
   },
   computed: {
     uniqueTags() {
         const sites = this.$site.pages
-            .filter(x => x.path.startsWith('/sites/') && !x.frontmatter.template)
+            .filter(x => x.path.startsWith('/gallery/') && !x.frontmatter.template)
         const tags = []
         sites.map(site => site.frontmatter.site_tags.map(tag => tags.push(tag)))
         return [...new Set(tags)]
@@ -71,7 +76,7 @@
     },
     sites(){
       return this.$site.pages
-          .filter(x => x.path.startsWith('/sites/') && !x.frontmatter.template)
+          .filter(x => x.path.startsWith('/gallery/') && !x.frontmatter.template)
           .sort((a, b) => new Date(b.frontmatter.date_added) - new Date(a.frontmatter.date_added))
     }
   }
@@ -80,37 +85,40 @@
 
 <style lang="sass">
 
-.header-tag-list
+.filter-wrapper
   position: sticky
   top: 0
   z-index: 2000
-  background: linear-gradient(#fff 70%, rgba(255,255,255,0) 100%)
+  background: #fff
+  display: flex
+  align-items: baseline
   margin-top: 0
-  min-height: 2.2em
+  padding: .2em 0
+  text-align: left
 
 .is-active
   border-bottom: 1px solid #333
 
 .site-list
   margin: 0 auto
-  justify-content: center
   list-style-type: none
   margin: 0
-  display: flex
-  flex-wrap: wrap
-  align-content: flex-start
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(430px, 1fr))
+  gap: 1em
+  padding: 0
+  margin-top: 1em
+  @media screen and (max-width: 420px)
+    grid-template-columns: 1fr
 
 .list-item
   display: inline-block
   position: relative
-  max-height: 400px
-  min-height: 400px
-  max-width: 400px
+  max-height: 400px 
   box-shadow: 0px 2px 10px rgba(0,0,0,.1)
   border-radius: .5em
   background: white
   overflow: hidden
-  margin: .5em
   transition: transform .3s ease-in-out
   &:last-child
     margin-bottom: 1em
@@ -118,6 +126,8 @@
     ///transform: scale(1.01)
 
 .site-title
+  font-family: 'Lora'
+  font-weight: normal
   font-size: 1.3em
 
 .figure
@@ -135,7 +145,7 @@
   right: 0
   display: grid
   align-content: center
-  height: 400px
+  height: 100%
   opacity: 0
   background: rgba(255,255,255,.9)
   margin: auto 0
@@ -149,11 +159,14 @@
   text-align: center
   width: 100%
 
+.site-tag-list
+  text-align: center
+
 .tag-list
   width: 100%
-  text-align: center
   list-style-type: none
-  margin-top: .2em
+  padding: 0
+  margin: 0
 
   .tag-item
     display: inline-block
