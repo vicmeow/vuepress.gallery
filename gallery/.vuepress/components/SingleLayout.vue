@@ -1,10 +1,7 @@
 <template>
   <div class="page-wrapper single-layout">
     <figure class="img-wrapper">
-      <img 
-        class="single-img"
-        :src="`/${ activeSrc }`"
-        :alt="$page.frontmatter.title">
+      <img class="single-img" :src="`/${ activeSrc }`" :alt="$page.frontmatter.title">
       <figcaption class="hidden">A screenshot of {{ $page.frontmatter.title }}</figcaption>
     </figure>
     <div class="single-content">
