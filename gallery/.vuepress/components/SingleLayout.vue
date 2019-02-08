@@ -116,7 +116,6 @@
     align-self: flex-start
     position: relative
     margin: 0 1em 0 1em
-    padding: .5em
     box-shadow: 0px 2px 10px rgba(0,0,0,.1)
     border-radius: 5px
     @media screen and (max-width: 768px)
@@ -126,6 +125,7 @@
   .single-img
     object-fit: scale-down
     object-position: 50% 0
+    border-radius: 5px
     @media screen and (max-width: 768px)
       object-fit: cover
 
@@ -155,6 +155,7 @@
     box-shadow: 0px 2px 10px rgba(0,0,0,.1)
     transition: transform .3s ease-in-out
     flex: 0 0 auto
+    border-radius: 5px
     &:hover
       cursor: pointer
       transform: scale(1.01)
