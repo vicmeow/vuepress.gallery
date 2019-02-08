@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper list-layout">
+  <div class="list-layout">
     <div class="filter-wrapper">
       <div class="accent" id="filter-heading">Filter:</div>
       <ul class="header-tag-list tag-list" aria-labelledby="filter-heading">
@@ -93,7 +93,7 @@
   display: flex
   align-items: baseline
   margin-top: 0
-  padding: .2em 0
+  padding: .3em 0
   text-align: left
 
 .is-active

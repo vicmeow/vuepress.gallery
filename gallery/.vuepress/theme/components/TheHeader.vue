@@ -1,15 +1,14 @@
 <template>
   <div class="nav-wrapper">
     <div class="logo">
-      <router-link class="home-link" to="/">
-      <span class="home-title">{{ $siteTitle }}</span> <span 
-          class="home-icon" 
-          :class="{ 'back-icon': $page.frontmatter.layout === 'single' }">
-        <img
-          class="icon" 
-          src="/favicon.ico"/>
+      <div class="home-link">
+        <span class="home-title">{{ $siteTitle }}</span>
+        <span lass="home-icon">
+          <img
+            class="icon" 
+            src="/favicon.ico"/>
         </span>
-      </router-link>
+      </div>
     </div>
     <nav>
       <router-link 
@@ -29,11 +28,12 @@
   z-index: 1000
   display: flex
   justify-content: space-between
-  padding: .3em 1em .3em
   margin-bottom: .5em
   align-items: center
   background: #fff
   flex-wrap: wrap
+  @media screen and (max-width: 768px)
+    position: relative
 
 .home-title
   @media screen and (max-width: 420px)
@@ -50,10 +50,6 @@
   height: .8em
   width: .8em
   transition: transform .2s linear
-  transform: rotate(0deg)
-
-.back-icon .icon
-  transform: rotate(90deg)
 
 .router-link-exact-active:not(.home-link)
   border-bottom: 1px solid #333

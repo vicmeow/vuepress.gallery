@@ -45,6 +45,7 @@ h1,h2,h3
 h1
   font-size: 1.8em
   line-height: 1.4
+  margin-bottom: .5rem
   @media screen and (max-width: 420px)
     font-size: 1.6em
 
@@ -72,17 +73,11 @@ a, a:visited, a:hover, a:focus
   text-decoration: none
   color: $black
 
-p a
-  border-bottom: 1px solid #36c425
-
-a:hover
+p a, a:hover
   border-bottom: 1px solid #333
 
 a:focus
   border-bottom: 1px solid #36c425
-
-*:focus
-  outline: none
 
 p
   margin-bottom: 1rem
@@ -95,11 +90,15 @@ img
   max-width: 750px
   margin: 0 auto
 
+.wrapper
+  padding: 0 1em
+
 .accent
   font-size: .9rem
   font-family: 'Lato', sans-serif
   text-transform: uppercase
   letter-spacing: .1em
+  border-bottom: 0
   &:focus
     border-bottom: 1px solid #333
   &:focus
@@ -109,3 +108,5 @@ img
   padding: 0 1em
   width: 100%
 
+svg.icon.outbound
+  display: none

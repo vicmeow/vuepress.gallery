@@ -1,12 +1,11 @@
 <template>
   <div class="wrapper">
     <the-header :key="'header'"/>
-    <Content 
+    <Content
       :class="{'default-layout': $route.fullPath !== '/'}" 
       :key="'$route.fullPath'"/>
     <component
       v-if="$page.frontmatter.layout"
-      class="content" 
       :is="layout"
       @update-filter="updateFilter"
       :key="$route.fullPath"/>
@@ -14,15 +13,9 @@
 </template>
 <script>
   import TheHeader from './components/TheHeader'
-  // import DefaultLayout from './layouts/DefaultLayout'
-  // import ListLayout from './layouts/ListLayout'
-  // import SingleLayout from './layouts/SingleLayout'
   export default {
     components: {
-      TheHeader,
-      // DefaultLayout,
-      // ListLayout,
-      // SingleLayout
+      TheHeader
       },
     data() {
       return {
@@ -33,9 +26,6 @@
       updateFilter(tag){
         this.filter = tag
       }
-    },
-    mounted() {
-      /* window.ga('set', 'anonymizeIp', true) */
     },
     computed: {
       layout() {
