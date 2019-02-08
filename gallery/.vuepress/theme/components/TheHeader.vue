@@ -32,6 +32,7 @@
   align-items: center
   background: #fff
   flex-wrap: wrap
+  padding: .3em 0
   @media screen and (max-width: 768px)
     position: relative
 
