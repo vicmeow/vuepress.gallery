@@ -1,25 +1,21 @@
 <template>
   <div class="wrapper">
-    <transition-group mode="out-in" name="page">
-      <the-header :key="'header'" :filter="filter" @update-filter="updateFilter"/>
-      <component
-        class="content" 
-        :is="layout"
-        :filter="filter"
-        @update-filter="updateFilter"
-        :key="$route.fullPath"/>
-    </transition-group>
+    <the-header :key="'header'"/>
+    <Content
+      :class="{'default-layout': $route.fullPath !== '/'}" 
+      :key="'$route.fullPath'"/>
+    <component
+      v-if="$page.frontmatter.layout"
+      :is="layout"
+      @update-filter="updateFilter"
+      :key="$route.fullPath"/>
   </div>
 </template>
 <script>
   import TheHeader from './components/TheHeader'
-  import ListLayout from './layouts/ListLayout'
-  import SingleLayout from './layouts/SingleLayout'
   export default {
     components: {
-      TheHeader,
-      ListLayout,
-      SingleLayout
+      TheHeader
       },
     data() {
       return {
@@ -31,12 +27,11 @@
         this.filter = tag
       }
     },
-    mounted() {
-      /* window.ga('set', 'anonymizeIp', true) */
-    },
     computed: {
       layout() {
-        return `${this.$page.frontmatter.layout}-layout`
+        return this.$page.frontmatter.layout
+          ? `${this.$page.frontmatter.layout}-layout`
+          : 'default-layout'
       }
     }
   }

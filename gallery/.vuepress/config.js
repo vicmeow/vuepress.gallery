@@ -1,6 +1,20 @@
 module.exports = {
   title: 'VuePress Gallery',
   description: 'A VuePress theme gallery, made with VuePress.',
+  themeConfig: {
+    nav: [
+      { text: 'Gallery', link: '/' },
+      // { text: 'Resources', link: '/resources/' },
+      // { text: 'Components', link: '/library/' },
+      { text: 'About', link: '/about/' }
+      // { text: 'Submissions', link: 'https://github.com/vicbergquist/vuepress.gallery' }
+    ]
+  },
+  markdown: {
+    anchor: {
+      permalink: false
+    }
+  },
   plugins: [
     [
       '@vuepress/google-analytics',

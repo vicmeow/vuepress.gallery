@@ -1,60 +1,56 @@
 <template>
-  <div class="header-wrapper" :class="{'header-sticky': $page.frontmatter.layout === 'single'}">
-    <header class="header">
-      <router-link class="nav-home" to="/">
-        <span 
-          class="home-icon" 
-          :class="{ 'back-icon': $page.frontmatter.layout === 'single' }">
-        <img
-          class="icon" 
-          src="/favicon.ico"/>
+  <div class="nav-wrapper">
+    <div class="logo">
+      <div class="home-link">
+        <span class="home-title">{{ $siteTitle }}</span>
+        <span lass="home-icon">
+          <img
+            class="icon" 
+            src="/favicon.ico"/>
         </span>
-      </router-link>
-        <h1 class="page-title"> {{ $siteTitle }}</h1>
-        <p class="page-description">{{ $description }}</p>
-    </header>
+      </div>
+    </div>
+    <nav>
+      <router-link 
+        class="nav-link accent"
+        v-for="nav in $site.themeConfig.nav" 
+        :key="nav.link"
+        :to="{ path: nav.link }">{{ nav.text }}</router-link>
+    </nav>
   </div>
 </template>
 
 <style lang="sass" scoped>
 
-.header-wrapper
-  width: 100%
-  z-index: 10000
-  background: linear-gradient(#fff 80%, rgba(255,255,255,0) 100%)
-  padding: 0 .5em
-  padding-top: .5em
-
-.header-sticky
+.nav-wrapper
   position: sticky
   top: 0
-  padding-bottom: 1em
-  min-height: 7em
-
-header
+  z-index: 1000
   display: flex
-  flex-direction: column
-  max-width: 1400px
-  margin: 0 auto
-  width: 100%
-  text-align: center
+  justify-content: space-between
+  margin-bottom: .5em
+  align-items: center
+  background: #fff
+  flex-wrap: wrap
+  @media screen and (max-width: 768px)
+    position: relative
 
-.nav-home
-  align-self: center
-  transition: transform .2s linear
-  &:hover
-    transform: scale(1.05)
-  &:focus
-    border-bottom: 1px solid #36c425
-    transform: scale(1.1)
+.home-title
+  @media screen and (max-width: 420px)
+    display: none
+
+.logo
+  font-size: 1.2em
+  font-family: 'Lora'
+
+.nav-link:not(:last-child)
+  margin-right: 1.5rem
 
 .icon
-  height: .9em
-  width: .9em
+  height: .8em
+  width: .8em
   transition: transform .2s linear
-  transform: rotate(0deg)
 
-.back-icon .icon
-  transform: rotate(90deg)
-
+.router-link-exact-active:not(.home-link)
+  border-bottom: 1px solid #333
 </style>

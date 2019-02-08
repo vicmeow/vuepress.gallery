@@ -10,7 +10,7 @@
     "build": "vuepress build gallery"
   },
   "dependencies": {
-    "vuepress": "^0.14.8"
+    "vuepress": "^1.0.0-alpha.36"
   },
   "devDependencies": {
     "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0",

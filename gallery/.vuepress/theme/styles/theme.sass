@@ -40,18 +40,34 @@ h1,h2,h3
   font-family: $heading
   color: $black
   font-weight: normal
-  margin: 0
+  margin: .5rem 0
 
 h1
   font-size: 1.8em
   line-height: 1.4
+  margin-bottom: .5rem
   @media screen and (max-width: 420px)
     font-size: 1.6em
 
-  span
-    font-size: .5em
-    text-transform: none
-    font-family: $body
+h2
+  font-size: 1.2em
+  font-family: $body
+  font-weight: bold
+  margin-top: 1em
+
+h3
+  font-size: 1em
+  font-family: $body
+  font-weight: bold
+  margin-top: 1em
+
+ul
+  margin: 1em 0
+  padding-left: 2em
+
+h3
+  font-family: $body
+  margin: .5em 0
 
 h3
   font-family: $body
@@ -61,34 +77,40 @@ a, a:visited, a:hover, a:focus
   text-decoration: none
   color: $black
 
-a:hover
+p a, a:hover
   border-bottom: 1px solid #333
 
 a:focus
   border-bottom: 1px solid #36c425
 
+p
+  margin-bottom: 1rem
+
 img
   width: 100%
   height: 100%
 
+.default-layout
+  max-width: 750px
+  margin: 0 auto
+
 .wrapper
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-content: center
-  align-items: center
+  padding: 0 1em
 
 .accent
-  font-size: .85rem
+  font-size: .9rem
   font-family: 'Lato', sans-serif
   text-transform: uppercase
   letter-spacing: .1em
+  border-bottom: 0
   &:focus
     border-bottom: 1px solid #333
   &:focus
     border-bottom: 1px solid #36c425
 
-.content
-  height: 100%
+.page-wrapper
+  padding: 0 1em
   width: 100%
 
+svg.icon.outbound
+  display: none
