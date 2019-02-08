@@ -93,7 +93,7 @@
   display: flex
   align-items: baseline
   margin-top: 0
-  padding: .2em 0
+  padding: .3em 0
   text-align: left
 
 .is-active
