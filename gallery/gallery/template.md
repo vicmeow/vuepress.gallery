@@ -8,7 +8,7 @@ date_added: YYYY-MM-DD
 site_description: description
 site_url: link to site
 site_screenshots:
-  - sites/path.png
+  - gallery/path.png
 site_tags:
   - tag
 ---
