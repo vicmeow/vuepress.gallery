@@ -130,9 +130,7 @@
   font-weight: normal
   font-size: 1.3em
 
-.figure
-  position: relative
-  height: 100%
+//.figure
   margin: 0
 
 .list-item:focus-within .caption, .list-item:hover .caption
