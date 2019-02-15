@@ -1,6 +1,7 @@
 <template>
   <div class="list-layout">
     <div class="filter-wrapper">
+      <!-- TODO: toggle filter -->
       <div class="accent" id="filter-heading">Filter:</div>
       <ul class="header-tag-list tag-list" aria-labelledby="filter-heading">
         <li
@@ -17,26 +18,26 @@
           tabindex="0">{{ tag }}</li>
       </ul>
     </div>
-    <ul class="site-list">
+    <ul class="theme-list">
       <li 
         class="list-item" 
-        v-for="site in filteredSites" 
-        :key="site.index">
+        v-for="theme in filteredThemes" 
+        :key="theme.index">
         <figure class="figure">
           <img 
-            class="site-img" 
-            :src="site.frontmatter.site_screenshots[0]" 
-            :alt="site.frontmatter.title + ' screenshot'">
-          <figcaption class="caption">
-            <h2 class="site-title">
-              <a class="site-link" :href="site.path">
-                {{ site.frontmatter.title }}</a>
+            class="theme-img" 
+            :src="theme.frontmatter.theme.screenshots[0]" 
+            :alt="theme.frontmatter.theme.title + ' screenshot'">
+          <figcaption class="theme-caption">
+            <h2 class="theme-title">
+              <a class="theme-link" :href="theme.path">
+                {{ theme.frontmatter.theme.title }}</a>
             </h2>
-            <ul class="site-tag-list tag-list">
+            <ul class="theme-tag-list tag-list">
               <li
                 tabindex="0"
                 class="tag-item accent" 
-                v-for="tag in site.frontmatter.site_tags" 
+                v-for="tag in theme.frontmatter.theme.tags" 
                 :key="tag.index"
                 @click="$emit('update-filter', tag)"
                 @keydown.enter="$emit('update-filter', tag)">{{ tag }}</li>
@@ -63,18 +64,18 @@
   },
   computed: {
     uniqueTags() {
-        const sites = this.$site.pages
-            .filter(x => x.path.startsWith('/gallery/') && !x.frontmatter.template)
-        const tags = []
-        sites.map(site => site.frontmatter.site_tags.map(tag => tags.push(tag)))
-        return [...new Set(tags)]
+      const themes = this.$site.pages
+          .filter(x => x.path.startsWith('/gallery/') && !x.frontmatter.template)
+      const tags = []
+      themes.map(theme => theme.frontmatter.theme.tags.map(tag => tags.push(tag)))
+      return [...new Set(tags)]
       },
-    filteredSites() {
-    return this.filter === 'all' 
-      ? this.sites
-      : this.sites.filter(site => site.frontmatter.site_tags.some(tag => tag === this.filter))
+    filteredThemes() {
+      return this.filter === 'all' 
+        ? this.themes
+        : this.themes.filter(theme => theme.frontmatter.theme.tags.some(tag => tag === this.filter))
     },
-    sites(){
+    themes(){
       return this.$site.pages
           .filter(x => x.path.startsWith('/gallery/') && !x.frontmatter.template)
           .sort((a, b) => new Date(b.frontmatter.date_added) - new Date(a.frontmatter.date_added))
@@ -99,7 +100,7 @@
 .is-active
   border-bottom: 1px solid #333
 
-.site-list
+.theme-list
   margin: 0 auto
   list-style-type: none
   margin: 0
@@ -125,18 +126,10 @@
   &:hover, &:focus-within
     ///transform: scale(1.01)
 
-.site-title
-  font-family: 'Lora'
-  font-weight: normal
-  font-size: 1.3em
-
-//.figure
-  margin: 0
-
-.list-item:focus-within .caption, .list-item:hover .caption
+.list-item:focus-within .theme-caption, .list-item:hover .theme-caption
   opacity: 1
 
-.caption
+.theme-caption
   position: absolute
   bottom: 0
   left: 0
@@ -154,18 +147,23 @@
     opacity: 1
     height: auto
     padding: .5em
+    padding-bottom: 1em
     background: rgba(255,255,255,.9)
     align-content: flex-end
 
-.site-img
+.theme-img
   object-fit: cover
   object-position: 50% 0
 
-.site-title
+.theme-title
   text-align: center
   width: 100%
+  font-family: 'Lora'
+  font-weight: normal
+  font-size: 1.3em
+  margin-top: .5em
 
-.site-tag-list
+.theme-tag-list
   text-align: center
 
 .tag-list

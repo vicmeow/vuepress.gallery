@@ -1,14 +1,21 @@
 ---
 template: true
 layout: single
-title: Website Title
-creator: Creator Name/username
-creator_url: link to twitter/github
 date_added: YYYY-MM-DD
-site_description: description
-site_url: link to site
-site_screenshots:
-  - gallery/path.png
-site_tags:
-  - tag
+creator:
+  name: Name
+  url: twitter/github url
+theme:
+  title: Website Title
+  description: description
+  url: url
+  repo: url
+  tags:
+    - tag 1
+    - tag 2
+  features:
+    - feature 1
+  screenshots:
+    - 1
+    - 2
 ---

@@ -4,26 +4,26 @@
       <img 
         class="single-img"
         :src="`/${ activeSrc }`"
-        :alt="$page.frontmatter.title">
-      <figcaption class="hidden">A screenshot of {{ $page.frontmatter.title }}</figcaption>
+        :alt="$page.frontmatter.theme.title">
+      <figcaption class="hidden">A screenshot of {{ $page.frontmatter.theme.title }}</figcaption>
     </figure>
     <div class="single-content">
         <!-- THEME TITLE -->
-        <h1 class="theme-title">{{ $page.frontmatter.title }}</h1>
+        <h1 class="theme-title">{{ $page.frontmatter.theme.title }}</h1>
         <!-- THEME CREATOR -->
         <p 
           class="theme-creator accent">by <a 
           class="accent"
-          :href="$page.frontmatter.creator_url"
-          v-text="$page.frontmatter.creator"/></p>
+          :href="$page.frontmatter.creator.url"
+          v-text="$page.frontmatter.creator.name"/></p>
         <!-- THEME DESCRIPTION -->
-        <p>{{ $page.frontmatter.site_description }}</p>
+        <p>{{ $page.frontmatter.theme.description }}</p>
         <!-- LIVE LINK -->
         <p class="accent">
           View <a
-            :href="$page.frontmatter.site_url">live</a>
-            <template v-if="$page.frontmatter.site_repo">
-              or on <a :href="$page.frontmatter.site_repo">GitHub</a>
+            :href="$page.frontmatter.theme.url">live</a>
+            <template v-if="$page.frontmatter.theme.repo">
+              or on <a :href="$page.frontmatter.theme.repo">GitHub</a>
             </template>
         </p>
       <h2 class="content-heading" id="screenshots-heading">Screenshots</h2>
@@ -33,7 +33,7 @@
         <li
           tabindex="0" 
           class="screenshot-item" 
-          v-for="screenshot in $page.frontmatter.site_screenshots"
+          v-for="screenshot in $page.frontmatter.theme.screenshots"
           @click="updateSrc(screenshot)"
           @keydown.enter="updateSrc(screenshot)">
           <img class="single-img" :src="`/${screenshot}`">
@@ -52,7 +52,7 @@
       }
     },
     mounted(){
-      this.activeSrc = this.$page.frontmatter.site_screenshots[0]
+      this.activeSrc = this.$page.frontmatter.theme.screenshots[0]
     },
     methods: {
       updateSrc(src) {
@@ -120,9 +120,11 @@
     border-radius: 5px
     @media screen and (max-width: 768px)
       margin: 0
-      padding-bottom: 2em
+      margin-bottom: 1em
 
   .single-img
+    display: block
+    height: auto
     object-fit: scale-down
     object-position: 50% 0
     border-radius: 5px
@@ -168,5 +170,7 @@
 
   .hidden
     visibility: hidden
+    position: absolute
+    bottom: 0
 
 </style>
