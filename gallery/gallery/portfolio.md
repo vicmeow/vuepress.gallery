@@ -12,6 +12,8 @@ theme:
   tags:
     - portfolio
   screenshots:
-    - gallery/portfolio.jpg
-    - gallery/portfolio-post.jpg
+    - src: gallery/portfolio.jpg
+      alt: landing page
+    - src: gallery/portfolio-post.jpg
+      alt: single portfolio item
 ---

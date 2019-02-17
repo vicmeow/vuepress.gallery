@@ -11,6 +11,8 @@ theme:
   tags:
     - documentation
   screenshots:
-    - gallery/vuesax.png
-    - gallery/vuesax-docs.png
+    - src: gallery/vuesax.png
+      alt: landing page
+    - src: gallery/vuesax-docs.png
+      alt: documentation
 ---

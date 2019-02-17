@@ -26,13 +26,11 @@
         <figure class="figure">
           <img 
             class="theme-img" 
-            :src="theme.frontmatter.theme.screenshots[0]" 
+            :src="theme.frontmatter.theme.screenshots[0].src" 
             :alt="theme.frontmatter.theme.title + ' screenshot'">
           <figcaption class="theme-caption">
-            <h2 class="theme-title">
-              <a class="theme-link" :href="theme.path">
+              <a class="theme-title theme-link" :href="theme.path">
                 {{ theme.frontmatter.theme.title }}</a>
-            </h2>
             <ul class="theme-tag-list tag-list">
               <li
                 tabindex="0"
@@ -157,10 +155,11 @@
 
 .theme-title
   text-align: center
-  width: 100%
   font-family: 'Lora'
   font-weight: normal
   font-size: 1.3em
+  margin: 0 auto
+  padding: 0 .2em
   margin-top: .5em
 
 .theme-tag-list

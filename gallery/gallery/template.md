@@ -16,6 +16,6 @@ theme:
   features:
     - feature 1
   screenshots:
-    - 1
-    - 2
+    - src: url
+      alt: image description
 ---

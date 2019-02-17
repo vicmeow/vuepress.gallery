@@ -3,9 +3,8 @@
     <figure class="img-wrapper">
       <img 
         class="single-img"
-        :src="`/${ activeSrc }`"
-        :alt="$page.frontmatter.theme.title">
-      <figcaption class="hidden">A screenshot of {{ $page.frontmatter.theme.title }}</figcaption>
+        :src="`/${ activeSrc.src }`"
+        :alt="activeSrc.alt">
     </figure>
     <div class="single-content">
         <!-- THEME TITLE -->
@@ -36,7 +35,7 @@
           v-for="screenshot in $page.frontmatter.theme.screenshots"
           @click="updateSrc(screenshot)"
           @keydown.enter="updateSrc(screenshot)">
-          <img class="single-img" :src="`/${screenshot}`">
+          <img class="single-img" :alt="screenshot.alt" :src="`/${screenshot.src}`">
         </li>
       </ul>
     </div>
@@ -52,7 +51,8 @@
       }
     },
     mounted(){
-      this.activeSrc = this.$page.frontmatter.theme.screenshots[0]
+      const screenshots = this.$page.frontmatter.theme.screenshots
+      this.activeSrc = screenshots[0]
     },
     methods: {
       updateSrc(src) {
@@ -158,6 +158,7 @@
     transition: transform .3s ease-in-out
     flex: 0 0 auto
     border-radius: 5px
+    align-self: flex-start
     &:hover
       cursor: pointer
       transform: scale(1.01)

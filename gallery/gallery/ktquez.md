@@ -12,6 +12,8 @@ theme:
   tags:
     - portfolio
   screenshots:
-    - gallery/ktquez.png
-    - gallery/ktquez-post.png
+    - src: gallery/ktquez.png
+      alt: Blog landing page
+    - src: gallery/ktquez-post.png
+      alt: Single blog post
 ---

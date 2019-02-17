@@ -11,7 +11,9 @@ theme:
   repo: https://github.com/alexjoverm/alexjover.com
   tags:
     - blog
-  screenshots:
-    - gallery/alex-jover.png
-    - gallery/alex-jover-post.png
+  screenshots: 
+    - src: gallery/alex-jover.png
+      alt: Blog landing page
+    - src: gallery/alex-jover-post.png
+      alt: Single blog post 
 ---

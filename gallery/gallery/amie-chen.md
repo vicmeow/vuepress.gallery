@@ -12,8 +12,12 @@ theme:
     - blog
     - portfolio
   screenshots:
-  - gallery/amie-chen.png
-  - gallery/amie-chen-blog.png
-  - gallery/amie-chen-post.png
-  - gallery/amie-chen-post-1.png
+    - src: gallery/amie-chen.png
+      alt: blog landing page
+    - src: gallery/amie-chen-blog.png
+      alt: blog home page
+    - src: gallery/amie-chen-post.png
+      alt: a single blog post
+    - src: gallery/amie-chen-post-1.png
+      alt: a slong single blog post
 ---

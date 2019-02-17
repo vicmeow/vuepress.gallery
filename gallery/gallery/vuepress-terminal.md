@@ -11,5 +11,6 @@ theme:
   tags:
     - portfolio
   screenshots:
-    - gallery/vuepress-terminal.png
+    - src: gallery/vuepress-terminal.png
+      alt: landing page
 ---
