@@ -98,8 +98,11 @@
       padding: 0
       overflow-x: auto
 
-  .theme-title:first-letter
-    text-transform: capitalize
+    > .theme-title
+        text-align: left
+        padding: 0
+        font-size: 1.8em
+        width: 100%
 
   .theme-creator
     margin-bottom: 1em

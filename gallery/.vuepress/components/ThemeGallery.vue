@@ -155,12 +155,6 @@
 
 .theme-title
   text-align: center
-  font-family: 'Lora'
-  font-weight: normal
-  font-size: 1.3em
-  margin: 0 auto
-  padding: 0 .2em
-  margin-top: .5em
 
 .theme-tag-list
   text-align: center
