@@ -5,9 +5,13 @@
       :class="{'default-layout': $route.fullPath !== '/'}" 
       :key="'$route.fullPath'"/>
     <component
-      v-if="$page.frontmatter.layout"
-      :is="layout"
+      v-if="!$page.frontmatter.home"
+      :is="'single-layout'"
       @update-filter="updateFilter"
+      :key="$route.fullPath"/>
+    <component
+      v-else
+      :is="'default-layout'"
       :key="$route.fullPath"/>
   </div>
 </template>
