@@ -1,5 +1,7 @@
 node_modules
 
-.vuepress/dist
+gallery/.vuepress/dist
 .env
-/gallery
+
+/gallery/gallery/*
+!/gallery/gallery/README.md
