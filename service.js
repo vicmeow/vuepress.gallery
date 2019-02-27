@@ -13,6 +13,9 @@ var config = {
 };
 firebase.initializeApp(config);
 
+const db = firebase.firestore();
+var themesRef = db.collection('themes');
+
 async function createThemeFiles() {
   const snapshot = await themesRef.get()
 
