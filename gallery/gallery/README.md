@@ -1,1 +1,0 @@
-All our themes will be added in this directory as Markdown files.

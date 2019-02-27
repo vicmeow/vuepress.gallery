@@ -8,21 +8,21 @@
     </figure>
     <div class="single-content">
         <!-- THEME TITLE -->
-        <h1 class="theme-title">{{ theme.title }}</h1>
+        <h1 class="theme-title">{{ $page.frontmatter.title }}</h1>
         <!-- THEME CREATOR -->
         <p
           class="theme-creator accent">by <a 
           class="accent"
-          :href="creator.url"
-          v-text="creator.name"/></p>
+          :href="$page.frontmatter.creator_url"
+          v-text="$page.frontmatter.creator_name"/></p>
         <!-- THEME DESCRIPTION -->
-        <p>{{ theme.description }}</p>
+        <p>{{ $page.frontmatter.description }}</p>
         <!-- LIVE LINK -->
         <p class="accent">
           View <a
-            :href="theme.url">live</a>
-            <template v-if="theme.repo">
-              or on <a :href="theme.repo">GitHub</a>
+            :href="$page.frontmatter.url">live</a>
+            <template v-if="$page.frontmatter.repo">
+              or on <a :href="$page.frontmatter.repo">GitHub</a>
             </template>
         </p>
       <h2 class="content-heading" id="screenshots-heading">Screenshots</h2>
@@ -32,7 +32,7 @@
         <li
           tabindex="0" 
           class="screenshot-item" 
-          v-for="screenshot in theme.screenshots"
+          v-for="screenshot in $page.frontmatter.screenshots"
           @click="updateSrc(screenshot)"
           @keydown.enter="updateSrc(screenshot)">
           <img class="single-img" :alt="screenshot.alt" :src="`/${screenshot.src}`">
@@ -47,20 +47,12 @@
     name: 'SingleLayout',
     data() {
       return {
-        activeSrc: '',
-        theme: {},
-        creator: {}
+        activeSrc: ''
       }
     },
     mounted(){
-      const screenshots = this.$frontmatter.theme.screenshots
+      const screenshots = this.$frontmatter.screenshots
       this.activeSrc = screenshots[0]
-      // $frontmatter.theme.title or $frontmatter.creator.url throws errors during build: 
-      // "Cannot read property title/url of undefined"
-      // Using computed properties also throws the errors
-      // This is the only workaround for now
-      this.theme = this.$frontmatter.theme
-      this.creator = this.$frontmatter.creator
     },
     methods: {
       updateSrc(src) {

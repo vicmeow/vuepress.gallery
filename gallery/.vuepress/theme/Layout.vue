@@ -9,10 +9,6 @@
       :is="'single-layout'"
       @update-filter="updateFilter"
       :key="$route.fullPath"/>
-    <component
-      v-else
-      :is="'default-layout'"
-      :key="$route.fullPath"/>
   </div>
 </template>
 <script>

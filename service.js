@@ -13,27 +13,17 @@ var config = {
 };
 firebase.initializeApp(config);
 
-const db = firebase.firestore();
-var themesRef = db.collection('themes');
-
-
-// ADD ALL THE THEMES 
-// themeData.map(theme => {
-//   themesRef.add({ theme }).then(console.log)
-// })
-
-
 async function createThemeFiles() {
   const snapshot = await themesRef.get()
 
   return snapshot.forEach(data => {
-    const { theme } = data.data();
-    const fileName = theme.theme.title.replace(/([A-Z])([A-Z])/g, '$1-$2').replace(/([a-z])([A-Z])/g, '$1-$2').replace(/[\s_]+/g, '-').toLowerCase();
+    const theme = data.data();
+    const fileName = theme.title.replace(/[\s_]+/g, '-').toLowerCase();
     const filePath = 'gallery/gallery/' + fileName + '.md';
     const fileContent = '---\n' + yaml.safeDump(theme) + '---';
     try {
       fs.writeFileSync(filePath, fileContent, { flag: 'wx' })
-      console.log('file written for ' + theme.theme.title)
+      console.log('file written for ' + theme.title)
     } catch(e) {
       console.log('The file already exists')
     }
