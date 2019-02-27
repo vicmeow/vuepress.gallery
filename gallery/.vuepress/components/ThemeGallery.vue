@@ -27,16 +27,16 @@
         <figure class="figure">
           <img 
             class="theme-img" 
-            :src="theme.frontmatter.screenshots[0].src" 
-            :alt="theme.frontmatter.screenshots[0].alt">
+            :src="theme.frontmatter.theme.screenshots[0].src" 
+            :alt="theme.frontmatter.theme.screenshots[0].alt">
           <figcaption class="theme-caption">
               <a class="theme-title theme-link" :href="theme.path">
-                {{ theme.title }}</a>
+                {{ theme.frontmatter.theme.title }}</a>
             <ul class="theme-tag-list tag-list">
               <li
                 tabindex="0"
                 class="tag-item accent" 
-                v-for="tag in theme.frontmatter.tags" 
+                v-for="tag in theme.frontmatter.theme.tags" 
                 :key="tag.index"
                 @click="$emit('update-filter', tag)"
                 @keydown.enter="$emit('update-filter', tag)">{{ tag }}</li>
@@ -66,13 +66,13 @@
       const themes = this.$site.pages
           .filter(x => x.path.startsWith('/gallery/'))
       const tags = []
-      themes.map(theme => theme.frontmatter.tags.map(tag => tags.push(tag)))
+      themes.map(theme => theme.frontmatter.theme.tags.map(tag => tags.push(tag)))
       return [...new Set(tags)]
       },
     filteredThemes() {
       return this.filter === 'all' 
         ? this.themes
-        : this.themes.filter(theme => theme.frontmatter.tags.some(tag => tag === this.filter))
+        : this.themes.filter(theme => theme.frontmatter.theme.tags.some(tag => tag === this.filter))
     },
     themes(){
       return this.$site.pages

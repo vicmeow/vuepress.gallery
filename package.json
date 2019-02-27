@@ -6,11 +6,8 @@
   "url": "https://github.com/vicbergquist/madewith-vuepress",
   "license": "MIT",
   "scripts": {
-    "build:files": "node service.js",
-    "serve:app": "vuepress dev gallery",
-    "serve": "run-s build:files serve:app",
-    "build": "run-s build:files build:app",
-    "build:app": "vuepress build gallery"
+    "serve": "vuepress dev gallery",
+    "build": "vuepress build gallery"
   },
   "dependencies": {
     "vuepress": "^1.0.0-alpha.36"

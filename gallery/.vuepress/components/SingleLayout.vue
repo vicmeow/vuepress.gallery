@@ -8,21 +8,21 @@
     </figure>
     <div class="single-content">
         <!-- THEME TITLE -->
-        <h1 class="theme-title">{{ $page.frontmatter.title }}</h1>
+        <h1 class="theme-title">{{ $page.frontmatter.theme.title }}</h1>
         <!-- THEME CREATOR -->
         <p
           class="theme-creator accent">by <a 
           class="accent"
-          :href="$page.frontmatter.creator_url"
-          v-text="$page.frontmatter.creator_name"/></p>
+          :href="$page.frontmatter.creator.url"
+          v-text="$page.frontmatter.creator.name"/></p>
         <!-- THEME DESCRIPTION -->
-        <p>{{ $page.frontmatter.description }}</p>
+        <p>{{ $page.frontmatter.theme.description }}</p>
         <!-- LIVE LINK -->
         <p class="accent">
           View <a
-            :href="$page.frontmatter.url">live</a>
-            <template v-if="$page.frontmatter.repo">
-              or on <a :href="$page.frontmatter.repo">GitHub</a>
+            :href="$page.frontmatter.theme.url">live</a>
+            <template v-if="$page.frontmatter.theme.repo">
+              or on <a :href="$page.frontmatter.theme.repo">GitHub</a>
             </template>
         </p>
       <h2 class="content-heading" id="screenshots-heading">Screenshots</h2>
@@ -32,7 +32,7 @@
         <li
           tabindex="0" 
           class="screenshot-item" 
-          v-for="screenshot in $page.frontmatter.screenshots"
+          v-for="screenshot in $page.frontmatter.theme.screenshots"
           @click="updateSrc(screenshot)"
           @keydown.enter="updateSrc(screenshot)">
           <img class="single-img" :alt="screenshot.alt" :src="`/${screenshot.src}`">
@@ -51,7 +51,7 @@
       }
     },
     mounted(){
-      const screenshots = this.$frontmatter.screenshots
+      const screenshots = this.$frontmatter.theme.screenshots
       this.activeSrc = screenshots[0]
     },
     methods: {
