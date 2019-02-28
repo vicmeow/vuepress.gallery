@@ -1,28 +1,28 @@
 <template>
-  <div class="page-wrapper single-layout">
+  <div class="page-wrapper gallery-item">
     <figure class="img-wrapper">
       <img 
         class="single-img"
         :src="`/${ activeSrc.src }`"
         :alt="activeSrc.alt">
     </figure>
-    <div class="single-content">
+    <div class="item-content">
         <!-- THEME TITLE -->
-        <h1 class="theme-title">{{ $page.frontmatter.theme.title }}</h1>
+        <h1 class="theme-title">{{ $page.frontmatter.title }}</h1>
         <!-- THEME CREATOR -->
-        <p 
+        <p
           class="theme-creator accent">by <a 
           class="accent"
-          :href="$page.frontmatter.creator.url"
-          v-text="$page.frontmatter.creator.name"/></p>
+          :href="$page.frontmatter.creator_url"
+          v-text="$page.frontmatter.creator_name"/></p>
         <!-- THEME DESCRIPTION -->
-        <p>{{ $page.frontmatter.theme.description }}</p>
+        <p>{{ $page.frontmatter.description }}</p>
         <!-- LIVE LINK -->
         <p class="accent">
           View <a
-            :href="$page.frontmatter.theme.url">live</a>
-            <template v-if="$page.frontmatter.theme.repo">
-              or on <a :href="$page.frontmatter.theme.repo">GitHub</a>
+            :href="$page.frontmatter.url">live</a>
+            <template v-if="$page.frontmatter.repo">
+              or on <a :href="$page.frontmatter.repo">GitHub</a>
             </template>
         </p>
       <h2 class="content-heading" id="screenshots-heading">Screenshots</h2>
@@ -32,7 +32,7 @@
         <li
           tabindex="0" 
           class="screenshot-item" 
-          v-for="screenshot in $page.frontmatter.theme.screenshots"
+          v-for="screenshot in $page.frontmatter.screenshots"
           @click="updateSrc(screenshot)"
           @keydown.enter="updateSrc(screenshot)">
           <img class="single-img" :alt="screenshot.alt" :src="`/${screenshot.src}`">
@@ -51,7 +51,7 @@
       }
     },
     mounted(){
-      const screenshots = this.$page.frontmatter.theme.screenshots
+      const screenshots = this.$frontmatter.screenshots
       this.activeSrc = screenshots[0]
     },
     methods: {
@@ -64,7 +64,7 @@
 
 <style lang="sass">
 
-  .single-layout
+  .gallery-item
     display: grid
     flex-shrink: 0
     flex-grow: 1
@@ -79,7 +79,7 @@
       max-width: 100%
       align-content: flex-start
 
-  .single-content
+  .item-content
     grid-area: more
     display: flex
     flex-direction: column

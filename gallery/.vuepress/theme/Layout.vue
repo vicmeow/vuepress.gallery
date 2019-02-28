@@ -1,21 +1,21 @@
 <template>
   <div class="wrapper">
     <the-header :key="'header'"/>
-    <Content
-      :class="{'default-layout': $route.fullPath !== '/'}" 
-      :key="'$route.fullPath'"/>
-    <component
-      v-if="$page.frontmatter.layout"
-      :is="layout"
-      @update-filter="updateFilter"
-      :key="$route.fullPath"/>
+    <component 
+      v-if="$route.fullPath !== '/about/'"
+      :is="layout"/>
+    <Content v-else/>
   </div>
 </template>
 <script>
   import TheHeader from './components/TheHeader'
+  import Gallery from './layouts/Gallery'
+  import GalleryItem from './layouts/GalleryItem'
   export default {
     components: {
-      TheHeader
+      TheHeader,
+      Gallery,
+      GalleryItem
       },
     data() {
       return {
@@ -29,9 +29,10 @@
     },
     computed: {
       layout() {
-        return this.$page.frontmatter.layout
-          ? `${this.$page.frontmatter.layout}-layout`
-          : 'default-layout'
+        const { path } = this.$page
+        return path === '/'
+                ? 'gallery'
+                : 'gallery-item'
       }
     }
   }
