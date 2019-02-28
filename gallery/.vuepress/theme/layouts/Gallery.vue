@@ -1,5 +1,5 @@
 <template>
-  <div class="list-layout">
+  <div class="gallery">
     <div class="filter-wrapper">
       <!-- TODO: toggle filter -->
       <div class="accent" id="filter-heading">Filter:</div>
@@ -50,7 +50,7 @@
 
 <script>
   export default {
-    name: 'ThemeGallery',
+    name: 'Gallery',
     data() {
       return {
         filter: 'all'
@@ -104,7 +104,7 @@
   list-style-type: none
   margin: 0
   display: grid
-  grid-template-columns: repeat(auto-fill, minmax(430px, 1fr))
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
   gap: 1em
   padding: 0
   margin-top: 1em
