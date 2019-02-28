@@ -6,7 +6,8 @@ module.exports = {
       { text: 'Gallery', link: '/' },
       // { text: 'Resources', link: '/resources/' },
       // { text: 'Components', link: '/library/' },
-      { text: 'About', link: '/about/' }
+      { text: 'About', link: '/about/' },
+      { text: 'Submit', link: '/submit/' }
       // { text: 'Submissions', link: 'https://github.com/vicbergquist/vuepress.gallery' }
     ]
   },
