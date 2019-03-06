@@ -1,3 +1,6 @@
+require('dotenv').config()
+const webpack = require('webpack')
+
 module.exports = {
   title: 'VuePress Gallery',
   description: 'A VuePress theme gallery, made with VuePress.',
@@ -36,5 +39,10 @@ module.exports = {
     ['meta', { name: 'twitter:creator', content: '@vicbergquist'}],
     ['meta', { name: 'twitter:site', content: '@vicbergquist'}],
     ['meta', { name: 'twitter:description', content: 'A VuePress theme gallery, made with VuePress.'}]
-  ]
+  ],
+  configureWebpack: (config) => {
+    return { plugins: [
+      new webpack.EnvironmentPlugin({ ...process.env })
+    ]}
+  }
 }

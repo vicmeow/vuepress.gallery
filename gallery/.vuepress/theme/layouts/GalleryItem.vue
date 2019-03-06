@@ -26,7 +26,8 @@
             </template>
         </p>
       <h2 class="content-heading" id="screenshots-heading">Screenshots</h2>
-      <ul
+      <image-list :images="$frontmatter.screenshots"/>
+      <!-- <ul
         class="screenshot-list" 
         aria-labelledby="screenshots-heading">
         <li
@@ -37,7 +38,7 @@
           @keydown.enter="updateSrc(screenshot)">
           <img class="single-img" :alt="screenshot.alt" :src="`/${screenshot.src}`">
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </template>

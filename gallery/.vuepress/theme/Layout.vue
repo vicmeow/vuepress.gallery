@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <the-header :key="'header'"/>
+    <Content v-if="!layout"/>
     <component 
-      v-if="$route.fullPath !== '/about/'"
+      v-else
       :is="layout"/>
-    <Content v-else/>
   </div>
 </template>
 <script>
@@ -19,7 +19,8 @@
       },
     data() {
       return {
-        filter: 'all'
+        filter: 'all',
+        auth: false
       }
     },
     methods: {
@@ -30,6 +31,7 @@
     computed: {
       layout() {
         const { path } = this.$page
+        if (path === '/submit/' || path === '/about/') return false
         return path === '/'
                 ? 'gallery'
                 : 'gallery-item'

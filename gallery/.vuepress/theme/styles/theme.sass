@@ -26,7 +26,7 @@ $bg: #feffff
 body
   font-family: $body
   color: $black
-  font-size: 20px
+  font-size: 18px
   margin: 0
   padding: 0
   background: $bg
@@ -77,11 +77,12 @@ a, a:visited, a:hover, a:focus
   text-decoration: none
   color: $black
 
-p a, a:hover
+p a
   border-bottom: 1px solid #333
 
-a:focus
-  border-bottom: 1px solid #36c425
+a:focus, a:hover
+  outline: 0
+  border-bottom: 2px solid #42b883
 
 p
   margin-bottom: 1rem
@@ -103,10 +104,6 @@ img
   text-transform: uppercase
   letter-spacing: .1em
   border-bottom: 0
-  &:focus
-    border-bottom: 1px solid #333
-  &:focus
-    border-bottom: 1px solid #36c425
 
 .theme-title
   font-family: 'Lora'
@@ -123,3 +120,15 @@ img
 
 svg.icon.outbound
   display: none
+
+.btn
+  display: flex
+  align-items: center
+  border: 0
+  font-size: .9em
+  padding: .5em 1.5em
+  font-family: 'Lato'
+  font-weight: bold
+  color: #333
+  border-radius: 3px
+  //margin: .5em 1em
