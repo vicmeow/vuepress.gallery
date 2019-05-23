@@ -1,41 +1,42 @@
 <template>
   <div class="page-wrapper gallery-item">
-    <figure class="img-wrapper">
-      <img 
-        class="single-img"
-        :src="`/${ activeSrc.src }`"
-        :alt="activeSrc.alt">
-    </figure>
+    <div class="img-wrapper">
+      <img class="single-img img-zoom" :src="`/${ activeSrc.src }`" :alt="activeSrc.alt">
+    </div>
     <div class="item-content">
-        <!-- THEME TITLE -->
-        <h1 class="theme-title">{{ $page.frontmatter.title }}</h1>
-        <!-- THEME CREATOR -->
-        <p
-          class="theme-creator accent">by <a 
+      <!-- THEME TITLE -->
+      <h1 class="theme-title">{{ $page.frontmatter.title }}</h1>
+      <!-- THEME CREATOR -->
+      <p class="theme-creator accent">
+        by
+        <a
           class="accent"
           :href="$page.frontmatter.creator_url"
-          v-text="$page.frontmatter.creator_name"/></p>
-        <!-- THEME DESCRIPTION -->
-        <p>{{ $page.frontmatter.description }}</p>
-        <!-- LIVE LINK -->
-        <p class="accent">
-          View <a
-            :href="$page.frontmatter.url">live</a>
-            <template v-if="$page.frontmatter.repo">
-              or on <a :href="$page.frontmatter.repo">GitHub</a>
-            </template>
-        </p>
-      <h2 class="content-heading" id="screenshots-heading">Screenshots</h2>
-      <ul
-        class="screenshot-list" 
-        aria-labelledby="screenshots-heading">
+          v-text="$page.frontmatter.creator_name"
+        />
+      </p>
+      <!-- THEME DESCRIPTION -->
+      <p>{{ $page.frontmatter.description }}</p>
+      <!-- LIVE LINK -->
+      <p class="accent">
+        View
+        <a :href="$page.frontmatter.url">live</a>
+        <template v-if="$page.frontmatter.repo">
+          or on
+          <a :href="$page.frontmatter.repo">GitHub</a>
+        </template>
+      </p>
+      <!-- <h2 class="content-heading" id="screenshots-heading">Screenshots</h2>
+      <image-list :images="$frontmatter.screenshots"/>-->
+      <ul class="screenshot-list" aria-labelledby="screenshots-heading">
         <li
-          tabindex="0" 
-          class="screenshot-item" 
+          tabindex="0"
+          class="screenshot-item"
           v-for="screenshot in $page.frontmatter.screenshots"
           @click="updateSrc(screenshot)"
-          @keydown.enter="updateSrc(screenshot)">
-          <img class="single-img" :alt="screenshot.alt" :src="`/${screenshot.src}`">
+          @keydown.enter="updateSrc(screenshot)"
+        >
+          <img class="single-img img-zoom" :alt="screenshot.alt" :src="`/${screenshot.src}`">
         </li>
       </ul>
     </div>
@@ -43,23 +44,23 @@
 </template>
 
 <script>
-  export default {
-    name: 'SingleLayout',
-    data() {
-      return {
-        activeSrc: ''
-      }
-    },
-    mounted(){
-      const screenshots = this.$frontmatter.screenshots
-      this.activeSrc = screenshots[0]
-    },
-    methods: {
-      updateSrc(src) {
-        this.activeSrc = src
-      }
+export default {
+  name: 'SingleLayout',
+  data() {
+    return {
+      activeSrc: ''
+    }
+  },
+  mounted() {
+    const screenshots = this.$frontmatter.screenshots
+    this.activeSrc = screenshots[0]
+  },
+  methods: {
+    updateSrc(src) {
+      this.activeSrc = src
     }
   }
+}
 </script>
 
 <style lang="sass">

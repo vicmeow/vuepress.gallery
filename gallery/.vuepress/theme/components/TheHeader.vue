@@ -4,18 +4,17 @@
       <div class="home-link">
         <span class="home-title">{{ $siteTitle }}</span>
         <span lass="home-icon">
-          <img
-            class="icon" 
-            src="/favicon.ico"/>
+          <img class="icon" src="/favicon.ico">
         </span>
       </div>
     </div>
     <nav>
-      <router-link 
+      <router-link
         class="nav-link accent"
-        v-for="nav in $site.themeConfig.nav" 
+        v-for="nav in $site.themeConfig.nav"
         :key="nav.link"
-        :to="{ path: nav.link }">{{ nav.text }}</router-link>
+        :to="{ path: nav.link }"
+      >{{ nav.text }}</router-link>
     </nav>
   </div>
 </template>
@@ -25,7 +24,7 @@
 .nav-wrapper
   position: sticky
   top: 0
-  z-index: 1000
+  z-index: 1
   display: flex
   justify-content: space-between
   margin-bottom: .5em

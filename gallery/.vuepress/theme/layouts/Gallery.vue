@@ -6,81 +6,80 @@
       <ul class="header-tag-list tag-list" aria-labelledby="filter-heading">
         <li
           class="tag-item accent"
-          @click="updateFilter('all')" 
+          @click="updateFilter('all')"
           :class="{'is-active': filter === 'all'}"
-          tabindex="0">All</li>
-        <li 
-          class="tag-item accent" 
+          tabindex="0"
+        >All</li>
+        <li
+          class="tag-item accent"
           v-for="tag in uniqueTags"
-          :key="tag.index" 
-          @click="updateFilter(tag)" 
+          :key="tag.index"
+          @click="updateFilter(tag)"
           :class="{'is-active': filter === tag}"
-          tabindex="0">{{ tag }}</li>
+          tabindex="0"
+        >{{ tag }}</li>
       </ul>
     </div>
     <ul class="theme-list">
-      <li 
-        class="list-item" 
-        v-for="theme in filteredThemes" 
-        :key="theme.index">
-        
-        <figure class="figure">
-          <img 
-            class="theme-img" 
-            :src="theme.frontmatter.screenshots[0].src" 
-            :alt="theme.frontmatter.screenshots[0].alt">
-          <figcaption class="theme-caption">
-              <a class="theme-title theme-link" :href="theme.path">
-                {{ theme.title }}</a>
+      <li class="list-item" v-for="theme in filteredThemes" :key="theme.index">
+        <div class="figure">
+          <img
+            class="theme-img"
+            :src="theme.frontmatter.screenshots[0].src"
+            :alt="theme.frontmatter.screenshots[0].alt"
+          >
+          <div class="theme-caption">
+            <a class="theme-title theme-link" :href="theme.path">{{ theme.title }}</a>
             <ul class="theme-tag-list tag-list">
               <li
                 tabindex="0"
-                class="tag-item accent" 
-                v-for="tag in theme.frontmatter.tags" 
+                class="tag-item accent"
+                v-for="tag in theme.frontmatter.tags"
                 :key="tag.index"
                 @click="$emit('update-filter', tag)"
-                @keydown.enter="$emit('update-filter', tag)">{{ tag }}</li>
+                @keydown.enter="$emit('update-filter', tag)"
+              >{{ tag }}</li>
             </ul>
-          </figcaption>
-        </figure>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'Gallery',
-    data() {
-      return {
-        filter: 'all'
-      }
-    },
-    methods: {
-    updateFilter(tag){
+export default {
+  name: 'Gallery',
+  data() {
+    return {
+      filter: 'all'
+    }
+  },
+  methods: {
+    updateFilter(tag) {
       this.filter = tag
     }
   },
   computed: {
     uniqueTags() {
       const themes = this.$site.pages
-          .filter(x => x.path.startsWith('/gallery/'))
+        .filter(x => x.path.startsWith('/gallery/'))
       const tags = []
       themes.map(theme => theme.frontmatter.tags.map(tag => tags.push(tag)))
       return [...new Set(tags)]
-      },
+    },
     filteredThemes() {
-      return this.filter === 'all' 
+      return this.filter === 'all'
         ? this.themes
         : this.themes.filter(theme => theme.frontmatter.tags.some(tag => tag === this.filter))
     },
-    themes(){
+    themes() {
       return this.$site.pages
-          .filter(x => x.path.startsWith('/gallery/'))
-          .sort((a, b) => new Date(b.frontmatter.date_added) - new Date(a.frontmatter.date_added))
+        .filter(x => x.path.startsWith('/gallery/'))
+        .sort((a, b) => new Date(b.frontmatter.date_added) - new Date(a.frontmatter.date_added))
     }
   }
-  }
+}
 </script>
 
 <style lang="sass">
@@ -104,7 +103,7 @@
   list-style-type: none
   margin: 0
   display: grid
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))
   gap: 1em
   padding: 0
   margin-top: 1em

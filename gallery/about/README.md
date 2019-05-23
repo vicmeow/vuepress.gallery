@@ -12,6 +12,8 @@ If you would like add your own theme to the gallery, please submit a [pull reque
 
 VuePress Gallery is a work in progress. Here are some features that are currently being planned or worked on:
 
+- Image optimization
+- More themes
 - Accessibility fixes
 - Repository links for each theme
 - Submit a theme feature
@@ -23,3 +25,5 @@ For more information, please take a look at the project on [GitHub](https://gith
 ## What is VuePress?
 
 VuePress is a Vue-powered static site generator for writing documentation. To learn more about VuePress and to get started, please see the [official documentation](https://vuepress.vuejs.org).
+
+You can now also get started with VuePress on [CodeSandbox](https://codesandbox.io)! VuePress has been added as a server template and the starter project includes information about files and structure, as well as a small guide on how to get started with theme customization.
