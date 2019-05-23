@@ -16,11 +16,11 @@
     "vuepress": "^1.0.0-alpha.48"
   },
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0",
-    "@vuepress/plugin-pwa": "^1.0.0-alpha.0",
-    "dotenv": "^6.2.0",
-    "firebase": "^5.8.4",
-    "node-sass": "^4.11.0",
+    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.48",
+    "@vuepress/plugin-pwa": "^1.0.0-alpha.48",
+    "dotenv": "^8.0.0",
+    "firebase": "^6.0.2",
+    "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
     "sass-loader": "^7.1.0",
     "vuepress-plugin-clean-urls": "^1.0.3"
